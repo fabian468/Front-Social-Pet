@@ -1,0 +1,97 @@
+.contenedorPageLogin {
+    width: 100%;
+    height: 100vh;
+    background-color: #eee;
+}
+
+
+
+
+.contenedorFormLogin {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #093543;
+    color: #fff;
+    position: fixed;
+    z-index: 100;
+}
+
+.contenedorFormLogin b {
+    color: red;
+}
+
+.formularioLogin {
+    display: flex;
+    height: max-content;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.formularioLogin input {
+    outline: none;
+    border-radius: .5rem;
+    border: none;
+    padding: .3rem;
+}
+
+.formularioLogin button {
+    border-radius: .4rem;
+    color: #fff;
+    background-color: #ef1582;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.formularioLogin button:hover {
+    background-color: #c61d71;
+}
+
+
+.linkNoTengoCuenta {
+    text-decoration: none;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.slider {
+    width: 40%;
+    height: 35vh;
+}
+
+.slider img {
+    width: 95%;
+    border-radius: 10rem 5rem 10rem 5rem;
+    box-shadow: 10px 5px 5px #ccc;
+}
+
+.contenedorContenidoLogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 10px;
+}
+
+.contenedorTextoLogin {
+
+    width: 30rem;
+    height: 60vh;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedorTextoLogin div {
+    text-align: center;
+    margin: 2rem 0 0 0;
+}
+
+
+.contenedorTextoLogin img {
+    width: 2rem;
+}

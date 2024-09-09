@@ -1,0 +1,114 @@
+.contenedorformPrincipal {
+    position: relative;
+    top: 5em;
+}
+
+.ContenedorInputPost {
+    display: flex;
+    justify-content: center;
+}
+
+.formPost {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+}
+
+.formPost textarea {
+    width: 25em;
+    height: 2em;
+    outline: none;
+    resize: none;
+    border-radius: 1.5em .8em 1.5em .8em;
+    padding: 1em;
+}
+
+/* From Uiverse.io by csemszepp */
+.custum-file-upload {
+    height: 10px;
+    width: 25em;
+    box-sizing: border-box;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: #212121;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px #e8e8e8;
+}
+
+.custum-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+    height: 40px;
+    fill: #e8e8e8;
+}
+
+.custum-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .text span {
+    font-weight: 400;
+    color: #e8e8e8;
+}
+
+.custum-file-upload input {
+    display: none;
+}
+
+.formPost button {
+    margin: auto;
+    width: 50%;
+    height: 2.2em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+
+/* =========================== */
+
+
+.ContenedorPrincipalPost {
+    display: flex;
+
+}
+
+.contenedorNavbarPrincipal,
+.contenedorAnuncios {
+    width: 30%;
+    height: 80vh;
+    background-color: #093543;
+    position: sticky;
+    top: 5em;
+}
+
+.contenedorPosts {
+    width: 40%;
+    padding: 1em;
+}
+
+.contenedorPosts p:nth-child(1) {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.contenedorPosts p:nth-child(2) {
+    text-align: center;
+    font-size: 19px;
+}
+
+.contenedorPosts img {
+    width: 100%;
+}

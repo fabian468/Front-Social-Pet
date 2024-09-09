@@ -1,0 +1,69 @@
+.contenFormRegister {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+}
+
+.contenFormRegister h1 {
+    text-align: center;
+}
+
+.contenFormRegister b {
+    color: red;
+}
+
+.formularioRegistro {
+    margin: 8rem 2rem 0 0;
+    width: 20em;
+    height: 75vh;
+    background-color: #093543;
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+    padding: 1em;
+    border-radius: 3em;
+    color: #fff;
+    text-align: center;
+}
+
+.formularioRegistro p {
+    font-size: 1.5em;
+}
+
+.formularioRegistro div {
+    display: flex;
+    flex-direction: column;
+}
+
+.formularioRegistro input {
+    margin: auto;
+    outline: none;
+    border: none;
+    border-radius: 2em;
+    padding: .4em;
+    width: 70%;
+    text-align: center;
+}
+
+.formularioRegistro button {
+    margin: auto;
+    width: 50%;
+    border-radius: .4rem;
+    color: #fff;
+    background-color: #ef1582;
+    border: none;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.formularioRegistro button:hover {
+    background-color: #c61d71;
+}
+
+.linkYaTengoCuenta {
+    color: #fff;
+    text-decoration: none;
+}
