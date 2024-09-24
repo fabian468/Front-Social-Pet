@@ -3,22 +3,31 @@ import Nav from '../components/ComponentsPrincipal/Nav'
 import LoadingPost from '../components/ComponentsPrincipal/LoadingPost'
 import NavbarPrincipal from '../components/ComponentsPrincipal/NavbarPrincipal'
 import Anuncios from '../components/ComponentsPrincipal/Anuncios'
-import LogOut from '../components/ComponentsPrincipal/LogOut';
 import "../styles/principal.css"
+import { Route, Routes } from 'react-router-dom'
+import PerfilUser from './PerfilUser'
+import StateUserGlobal from '../context/StateUserGlobal'
+import ContenidoParaNavPrincipal from '../components/ComponentsPrincipal/ContenidoParaNavPrincipal'
 
 function Principal() {
 
     return (
-        <div>
-            <Nav contenido={<LogOut />} />
-            <div className='contenedorformPrincipal'>
-                <div className='ContenedorPrincipalPost'>
-                    <NavbarPrincipal />
-                    <LoadingPost />
-                    <Anuncios />
+        <StateUserGlobal >
+            <div>
+                <Nav contenido={<ContenidoParaNavPrincipal />} />
+                <div className='contenedorformPrincipal'>
+                    <div className='ContenedorPrincipalPost'>
+                        <NavbarPrincipal />
+                        <Routes>
+                            <Route path='post' element={<LoadingPost />} />
+                            <Route path='perfil' element={<PerfilUser />} />
+                            <Route path='perfil/:user/:id' element={<PerfilUser />} />
+                        </Routes>
+                        <Anuncios />
+                    </div>
                 </div>
             </div>
-        </div>
+        </StateUserGlobal>
     )
 }
 

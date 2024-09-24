@@ -8,14 +8,14 @@ function FormLogin() {
     const [email, setEmail] = useState(undefined)
     const [password, setPassword] = useState(undefined)
     const [mantenerSesion, setMantenerSesion] = useState(true)
-    const [errorEmail, serErrorEmail] = useState(false)
+    const [errorEmail, serErrorEmail] = useState(false);
 
     const navigate = useNavigate()
 
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            navigate('/home');
+            navigate('/home/post');
         }
     }, [navigate]);
 
@@ -27,9 +27,9 @@ function FormLogin() {
         if (res.token && mantenerSesion) {
             localStorage.setItem('token', res.token);
             localStorage.setItem('idUser', res.idUser);
-            navigate('/home');
+            navigate('/home/post');
         } else if (!mantenerSesion) {
-            navigate('/home');
+            navigate('/home/post');
             localStorage.setItem('idUser', res.idUser);
         } else {
             console.log("No se recibió un token en la respuesta");

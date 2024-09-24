@@ -1,15 +1,20 @@
 const URI = "http://localhost:4000/post/";
 
 export async function ViewAllPosts() {
-    const res = await fetch(URI + "postsall")
+    try {
+        const res = await fetch(URI + "postsall")
 
-    if (!res.ok) {
-        return false
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json()
+
+        return data
+    } catch (e) {
+        console.log("error")
     }
 
-    const data = await res.json()
-
-    return data
 }
 
 
@@ -32,8 +37,79 @@ export async function createPost(content, image, author) {
         }
 
         const result = await response.json();
-        console.log('Post creado con éxito:', result);
+        if (result) {
+            return result
+        } else {
+            alert("error")
+        }
+
     } catch (error) {
         console.error('Error al crear el post:', error);
+    }
+}
+
+
+export async function deletePost(idPost) {
+
+    try {
+        const response = await fetch(URI + 'posts/' + idPost, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al eliminar el post');
+        }
+
+        const result = await response.json();
+        return result
+    } catch (error) {
+        return ('Error al crear el post:', error);
+    }
+}
+
+
+export async function getDataUserPerfil(authorId) {
+    try {
+
+        const res = await fetch(URI + 'postsuser', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ authorId }),
+        });
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+
+export async function commentsPost(postId, userId, comment) {
+    try {
+
+
+        const res = await fetch(URI + "posts/comments", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ postId, userId, comment }),
+        });
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (e) {
+        console.error(e)
     }
 }

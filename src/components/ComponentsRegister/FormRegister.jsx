@@ -10,6 +10,7 @@ function FormRegister() {
     const [paisRegistro, setPaisRegistro] = useState(undefined)
     const [claveRegistro, setclaveRegistro] = useState(undefined)
     const [repetirClaveRegistro, setRepetirClaveRegistro] = useState(undefined)
+    const [image, setImage] = useState(undefined)
 
     const [errorClave, seterrorClave] = useState(false)
 
@@ -20,6 +21,12 @@ function FormRegister() {
 
     }
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    };
+
+
     const navigate = useNavigate()
 
     async function HandlerSubmit(e) {
@@ -27,11 +34,17 @@ function FormRegister() {
 
         const emailValidate = validateEmail(emailRegistro)
 
-        if (claveRegistro === repetirClaveRegistro && emailValidate) {
-            const res = await userRegister(nombreRegistro, emailRegistro, paisRegistro, claveRegistro)
-            if (res) navigate("/")
-        } else if (!emailValidate) {
-            return "error"
+        if (claveRegistro === repetirClaveRegistro && emailRegistro !== undefined) {
+            if (emailValidate) {
+                const res = await userRegister(nombreRegistro, emailRegistro, paisRegistro, claveRegistro, image)
+                if (res.message === "Usuario registrado exitosamente") {
+                    navigate("/home/post")
+                    localStorage.setItem('token', res.token);
+                    localStorage.setItem('idUser', res.user._id);
+                }
+            } else {
+                return "error"
+            }
         } else {
             seterrorClave(true)
         }
@@ -43,33 +56,41 @@ function FormRegister() {
             HandlerSubmit(e)
         }} >
             <p>Registrate</p>
-            <div>
-                <label htmlFor="nombreRegister">Nombre:</label>
-                <input id='nombreRegister' type="text" onChange={(e) => setNombreRegistro(e.target.value)} />
-            </div>
-            <div>
-                <label htmlFor="emailRegister">Email:</label>
-                <input id='emailRegister' type="email" onChange={(e) => setEmailRegistro(e.target.value)} />
+            <div className='sectionrow'>
+                <div>
+                    <label htmlFor="nombreRegister">Nombre:</label>
+                    <input id='nombreRegister' type="text" onChange={(e) => setNombreRegistro(e.target.value)} />
+                </div>
+                <div>
+                    <label htmlFor="emailRegister">Email:</label>
+                    <input id='emailRegister' type="email" onChange={(e) => setEmailRegistro(e.target.value)} />
+                </div>
             </div>
             <div>
                 <label htmlFor="paisRegistro">País:</label>
                 <SelectOptionPaises setPais={setPaisRegistro} />
             </div>
             <div>
-                <label htmlFor="passwordLogin">Clave:</label>
-                <input id='passwordLogin' type="password" onChange={(e) => {
-                    seterrorClave(false)
-                    setclaveRegistro(e.target.value)
-                }} />
+                <label htmlFor="avatar">Imagen perfil</label>
+                <input type="file" id='avatar' onChange={handleImageChange} />
             </div>
-            <div>
-                <label htmlFor="repeatPasswordRegister">Repetir Clave:</label>
-                <input id='repeatPasswordRegister' type="password" onChange={(e) => {
-                    seterrorClave(false)
-                    setRepetirClaveRegistro(e.target.value)
-                }} />
+            <div className='sectionrow'>
+                <div>
+                    <label htmlFor="passwordLogin">Clave:</label>
+                    <input id='passwordLogin' type="password" onChange={(e) => {
+                        seterrorClave(false)
+                        setclaveRegistro(e.target.value)
+                    }} />
+                </div>
+                <div>
+                    <label htmlFor="repeatPasswordRegister">Repetir Clave:</label>
+                    <input id='repeatPasswordRegister' type="password" onChange={(e) => {
+                        seterrorClave(false)
+                        setRepetirClaveRegistro(e.target.value)
+                    }} />
+                </div>
             </div>
-            {errorClave && <p>La clave no es la misma</p>}
+            {errorClave && <p>La clave no coincide</p>}
             <div>
                 <button>Regitrarme</button>
             </div>

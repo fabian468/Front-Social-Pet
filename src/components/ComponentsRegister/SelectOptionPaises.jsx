@@ -1,8 +1,8 @@
 function SelectOptionPaises({ setPais }) {
     return (
         <div>
-            <select name="country" className="form-control" onChange={e => setPais(e.target.value)}>
-                <option value="">Country</option>
+            <select name="pais" className="form-control" onChange={e => setPais(e.target.value)}>
+                <option value="CL">Chile</option>
                 <option value="AF">Afghanistan</option>
                 <option value="AL">Albania</option>
                 <option value="DZ">Algeria</option>

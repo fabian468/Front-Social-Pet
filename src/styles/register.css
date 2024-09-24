@@ -1,36 +1,27 @@
-.contenFormRegister {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #eee;
-}
-
-.contenFormRegister h1 {
-    text-align: center;
-}
-
-.contenFormRegister b {
-    color: red;
-}
-
 .formularioRegistro {
     margin: 8rem 2rem 0 0;
-    width: 20em;
-    height: 75vh;
+
+    max-width: 50em;
+    min-width: 10em;
+    width: 40em;
+    height: 65vh;
     background-color: #093543;
     display: flex;
     flex-direction: column;
     gap: 4%;
     padding: 1em;
-    border-radius: 3em;
+    border-radius: 2em;
     color: #fff;
     text-align: center;
+    justify-content: space-between;
+    flex-wrap: wrap
 }
+
+
 
 .formularioRegistro p {
     font-size: 1.5em;
+    margin: 0;
 }
 
 .formularioRegistro div {
@@ -42,7 +33,7 @@
     margin: auto;
     outline: none;
     border: none;
-    border-radius: 2em;
+    border-radius: .4em;
     padding: .4em;
     width: 70%;
     text-align: center;
@@ -63,7 +54,31 @@
     background-color: #c61d71;
 }
 
-.linkYaTengoCuenta {
-    color: #fff;
-    text-decoration: none;
+.formularioRegistro select {
+    width: 50%;
+    height: 2em;
+    border-radius: 1em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.sectionrow {
+    width: 100%;
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+}
+
+.sectionrow div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.sectionrow input {
+    width: 85%;
+
 }

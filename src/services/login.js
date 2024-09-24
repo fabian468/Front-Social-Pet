@@ -21,14 +21,19 @@ export async function userLogin(email, password) {
     }
 }
 
-export async function userRegister(name, email, country, password) {
+export async function userRegister(name, email, country, password, image) {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('country', country);
+    formData.append('password', password);
+    formData.append('image', image);
     try {
         const res = await fetch(URI + "users", {
             method: "POST",
+            body: formData,
             headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ name, email, country, password }),
+            }
         });
 
         if (!res.ok) {
@@ -42,3 +47,4 @@ export async function userRegister(name, email, country, password) {
         console.error(e)
     }
 }
+

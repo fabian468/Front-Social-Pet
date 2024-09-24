@@ -17,6 +17,7 @@
 .formPost textarea {
     width: 25em;
     height: 2em;
+    max-height: 4em;
     outline: none;
     resize: none;
     border-radius: 1.5em .8em 1.5em .8em;
@@ -94,21 +95,163 @@
     top: 5em;
 }
 
-.contenedorPosts {
+.contenedorPosts,
+.contenedorPerfilUser {
     width: 40%;
     padding: 1em;
+    position: relative;
 }
 
-.contenedorPosts p:nth-child(1) {
+.autorPost {
     font-weight: 600;
     font-size: 15px;
 }
 
-.contenedorPosts p:nth-child(2) {
+.contenidoPost {
     text-align: center;
     font-size: 19px;
 }
 
 .contenedorPosts img {
     width: 100%;
+}
+
+.tarroDelete {
+    position: absolute;
+    left: 95%;
+    cursor: pointer;
+}
+
+/*=============================*/
+
+.contenedorListaBusquedaUsuario {
+    margin-top: .2em;
+    z-index: 200;
+    position: absolute;
+    background-color: #ccc;
+    min-width: 300px;
+    border-radius: 20px;
+
+}
+
+.ContenedorContenidoNavPrincipal {
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*=============================*/
+
+.InputSearchUser {
+    min-width: 300px;
+    height: 1.9em;
+    outline: none;
+    padding: 1em;
+    border: none;
+    border-radius: 10px;
+}
+
+/*==========*/
+
+.contenedorTotalComentarios {
+    display: flex;
+    justify-content: center;
+}
+
+.contenedorComments {
+    background-color: #eee;
+    border-radius: 2em;
+    padding: .8em;
+    margin: .5em;
+    min-width: 450px;
+
+}
+
+.contenedorComments div {
+    margin: 0 0 0 1em;
+}
+
+.NameUserComments {
+    font-size: 12px;
+    padding: 0;
+    margin: 0 0 5px 0;
+    font-weight: 800;
+}
+
+.comentario {
+    margin: 0;
+}
+
+.FormCommenst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.FormCommenst textarea {
+    resize: none;
+    width: 80%;
+    margin: 0 0 1em 0;
+    border-radius: .5em;
+    outline: none;
+    height: 2.2em;
+    padding: .5em;
+    background-color: #ccc;
+    border: none;
+}
+
+.FormCommenst button {
+    width: 10em;
+    cursor: pointer;
+    padding: 2px;
+}
+
+/*==========================*/
+.despliegueComentarios {
+    cursor: pointer;
+    margin: 0;
+    text-align: end;
+}
+
+/*==========================*/
+
+.ContenedorNavbarPrincipal {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    height: 70vh;
+
+
+}
+
+.ContenedorNavbarPrincipal li {
+    text-decoration: none;
+    list-style: none;
+    width: 100%;
+    font-size: large;
+}
+
+.ContenedorNavbarPrincipal .active {
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 30px;
+    transition: padding .3s;
+}
+
+
+.ContenedorNavbarPrincipal .noactive {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contenedorBienvenido {
+    color: #fff;
+    text-align: center;
 }

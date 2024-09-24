@@ -3,6 +3,7 @@ import { MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
 
+
 function LogOut() {
     const navigate = useNavigate()
     function logout() {
@@ -12,6 +13,7 @@ function LogOut() {
     }
     return (
         <div>
+
             <div onClick={logout}><MdOutlineLogout /></div>
         </div>
     )

@@ -1,0 +1,16 @@
+.contenedorPerfilUser {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+.imgPostsPerfilUser {
+    width: 100%;
+}
+
+.imgAvatar {
+    width: 40%;
+    border-radius: 50%;
+}
