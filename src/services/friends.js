@@ -99,3 +99,24 @@ export async function rejectFriensRequest(userId, friendId) {
         console.error(e)
     }
 }
+
+export async function getAllFriends(userId) {
+    try {
+        const res = await fetch(URI + "perfil/GetAllFriends", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId }),
+        });
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (e) {
+        console.error(e)
+    }
+}

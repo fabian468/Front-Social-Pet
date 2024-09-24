@@ -24,7 +24,7 @@ function NavbarConDatos({ dataUser }) {
                 </li>
                 <li>
                     <NavLink
-                        to={"friens"}
+                        to={"friends"}
                         className={({ isActive }) => (isActive ? 'active' : 'noactive')}
                     >
                         Amigos
