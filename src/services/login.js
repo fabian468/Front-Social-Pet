@@ -28,6 +28,7 @@ export async function userRegister(name, email, country, password, image) {
     formData.append('country', country);
     formData.append('password', password);
     formData.append('image', image);
+    console.log(image)
     try {
         const res = await fetch(URI + "users", {
             method: "POST",

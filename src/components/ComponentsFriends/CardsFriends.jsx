@@ -12,7 +12,15 @@ function CardsFriends() {
     return (
         <div>
             {
-                data ? data.map((d) => { return <div key={d._id}> <p>{d.name}</p> </div> }) : <p>Agregue amistad</p>
+                data ? data.map((d) => {
+                    return (
+                        <div key={d._id}>
+                            <img src={d.image} alt="" />
+                            <p>{d.name}</p>
+                        </div>
+                    )
+                })
+                    : <p>Agregue amistad</p>
             }
         </div>
     )

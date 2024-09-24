@@ -11,11 +11,13 @@ function PerfilDatosUser() {
     const { user, id } = useParams();
     const { estadoUsuario } = useVerificarUsuariosAmistad(dataUser._id, id);
 
+
+
     return (
         <div>
             {!id ? (
                 <div>
-                    <img className="imgAvatar" src={dataUser.image ? dataUser.image : avatar} alt="avatar socialPet" />
+                    <img className="imgAvatar" src={dataUser.image ? `http://localhost:4000${dataUser.image.replace(/\\/g, '/')}` : avatar} alt="avatar socialPet" />
                     <h2>{dataUser.name}</h2>
                     <hr />
                     <PostOfUser id={dataUser._id} />

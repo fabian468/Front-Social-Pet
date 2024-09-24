@@ -18,7 +18,6 @@ function FormRegister() {
         1: "Campo necesario",
         2: "Error en el email",
         3: "Error en clave"
-
     }
 
     const handleImageChange = (e) => {
@@ -72,7 +71,7 @@ function FormRegister() {
             </div>
             <div>
                 <label htmlFor="avatar">Imagen perfil</label>
-                <input type="file" id='avatar' onChange={handleImageChange} />
+                <input name='avatar' type="file" id='avatar' onChange={handleImageChange} />
             </div>
             <div className='sectionrow'>
                 <div>
