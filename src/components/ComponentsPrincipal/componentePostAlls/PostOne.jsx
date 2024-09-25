@@ -30,7 +30,7 @@ function PostOne({ data }) {
                         {despliegueComentario === d._id && (
                             <>
                                 <div className='contenedorTotalComentarios'>
-                                    <CommentsPost comments={d.comments} />
+                                    <CommentsPost comments={d.comments} idPost={d._id} />
                                 </div>
                                 <FormComentPost d={d} />
                             </>

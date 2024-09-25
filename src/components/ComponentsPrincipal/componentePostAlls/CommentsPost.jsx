@@ -1,6 +1,11 @@
 import React from 'react'
+import { canUserDeletePost } from '../../../helpers/canDeletePost'
+import { MdDelete } from 'react-icons/md'
+import { deleteComments } from '../../../services/posts'
 
-function CommentsPost({ comments }) {
+function CommentsPost({ comments, idPost }) {
+
+
     return (
         <div>
             {
@@ -10,6 +15,9 @@ function CommentsPost({ comments }) {
                         <div>
                             <p className='NameUserComments'>{com.user.name} </p>
                             <p className='comentario' >{com.comment} </p>
+                            {canUserDeletePost(com.user._id) && (
+                                <MdDelete className='tarroDelete' onClick={() => deleteComments(idPost, com._id)} />
+                            )}
                         </div>
                     </div>
                 }) : <></>

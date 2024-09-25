@@ -113,3 +113,21 @@ export async function commentsPost(postId, userId, comment) {
         console.error(e)
     }
 }
+
+export async function deleteComments(postId, commentId) {
+
+    try {
+        const response = await fetch(URI + 'posts/' + postId + '/comments/' + commentId, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al eliminar el comentario');
+        }
+
+        const result = await response.json();
+        return result
+    } catch (error) {
+        return ('Error al eliminar el post:', error);
+    }
+}
