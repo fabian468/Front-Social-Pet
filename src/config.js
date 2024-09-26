@@ -1,0 +1,1 @@
+export const URIIMG = "http://localhost:4000"
