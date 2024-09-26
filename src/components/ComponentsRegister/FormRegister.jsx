@@ -1,99 +1,149 @@
-import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { userRegister } from '../../services/login'
 import { useNavigate } from 'react-router-dom'
-import { validateEmail } from '../../helpers/ValidateEmail'
 import SelectOptionPaises from './SelectOptionPaises'
 
+
 function FormRegister() {
-    const [nombreRegistro, setNombreRegistro] = useState(undefined)
-    const [emailRegistro, setEmailRegistro] = useState(undefined)
-    const [paisRegistro, setPaisRegistro] = useState(undefined)
-    const [claveRegistro, setclaveRegistro] = useState(undefined)
-    const [repetirClaveRegistro, setRepetirClaveRegistro] = useState(undefined)
-    const [image, setImage] = useState(undefined)
 
-    const [errorClave, seterrorClave] = useState(false)
 
-    const errores = {
-        1: "Campo necesario",
-        2: "Error en el email",
-        3: "Error en clave"
-    }
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-    };
-
+    const { register,
+        handleSubmit,
+        formState: { errors },
+        watch,
+        reset,
+        setError
+    } = useForm()
 
     const navigate = useNavigate()
 
-    async function HandlerSubmit(e) {
-        e.preventDefault();
 
-        const emailValidate = validateEmail(emailRegistro)
-
-        if (claveRegistro === repetirClaveRegistro && emailRegistro !== undefined) {
-            if (emailValidate) {
-                const res = await userRegister(nombreRegistro, emailRegistro, paisRegistro, claveRegistro, image)
-                if (res.message === "Usuario registrado exitosamente") {
-                    navigate("/home/post")
-                    localStorage.setItem('token', res.token);
-                    localStorage.setItem('idUser', res.user._id);
-                }
-            } else {
-                return "error"
-            }
-        } else {
-            seterrorClave(true)
+    const onSubmit = handleSubmit(async (data) => {
+        const res = await userRegister(data.nombre, data.email, data.pais, data.password, data.avatar[0])
+        if (res.message === "Usuario registrado exitosamente") {
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('idUser', res.user._id);
+            reset()
+            navigate("/home/post")
+        } else if (res.message === "El correo electrónico ya está registrado") {
+            setError("email", {
+                type: "manual",
+                message: "El correo electrónico ya está registrado"
+            });
         }
-    }
+    })
 
 
     return (
-        <form className='formularioRegistro' onSubmit={(e) => {
-            HandlerSubmit(e)
-        }} >
+        <form className='formularioRegistro' onSubmit={onSubmit} >
             <p>Registrate</p>
             <div className='sectionrow'>
                 <div>
                     <label htmlFor="nombreRegister">Nombre:</label>
-                    <input id='nombreRegister' type="text" onChange={(e) => setNombreRegistro(e.target.value)} />
+                    <input {...register("nombre", {
+                        required: {
+                            value: true,
+                            message: "Nombre es requerido"
+                        },
+                        minLength: {
+                            value: 2,
+                            message: "El nombre debe tener al menos 2 caracteres"
+                        },
+                    })}
+                        id='nombreRegister'
+                        type="text" />
+                    {
+                        errors.nombre && <span>{errors.nombre.message} </span>
+                    }
+
                 </div>
+
                 <div>
                     <label htmlFor="emailRegister">Email:</label>
-                    <input id='emailRegister' type="email" onChange={(e) => setEmailRegistro(e.target.value)} />
+                    <input {...register("email",
+                        {
+                            required: {
+                                value: true,
+                                message: "El correo es requerido"
+                            },
+                            pattern: {
+                                value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,4})$/,
+                                message: "Correo no valido"
+                            }
+                        })}
+                        id='emailRegister'
+                        type="email"
+                    />
+                    {
+                        errors.email && <span>{errors.email.message} </span>
+                    }
                 </div>
             </div>
             <div>
                 <label htmlFor="paisRegistro">País:</label>
-                <SelectOptionPaises setPais={setPaisRegistro} />
+                <SelectOptionPaises register={register} />
             </div>
             <div>
                 <label htmlFor="avatar">Imagen perfil</label>
-                <input name='avatar' type="file" id='avatar' onChange={handleImageChange} />
+                <input {...register("avatar",
+                    {
+                        required: false
+                    })}
+                    name='avatar'
+                    type="file"
+                    id='avatar'
+                />
             </div>
+
             <div className='sectionrow'>
                 <div>
                     <label htmlFor="passwordLogin">Clave:</label>
-                    <input id='passwordLogin' type="password" onChange={(e) => {
-                        seterrorClave(false)
-                        setclaveRegistro(e.target.value)
-                    }} />
+                    <input {...register("passsword",
+                        {
+                            required: {
+                                value: true,
+                                message: "La clave es requerida"
+                            },
+                            minLength: {
+                                value: 6,
+                                message: "La clave de tener al menos 6 caracteres"
+                            },
+                        })}
+                        id='passwordLogin'
+                        type="password"
+                    />
+                    {
+                        errors.passsword && <span>{errors.passsword.message} </span>
+                    }
+
                 </div>
+
                 <div>
                     <label htmlFor="repeatPasswordRegister">Repetir Clave:</label>
-                    <input id='repeatPasswordRegister' type="password" onChange={(e) => {
-                        seterrorClave(false)
-                        setRepetirClaveRegistro(e.target.value)
-                    }} />
+                    <input {...register("confirmarPassword",
+                        {
+                            required: {
+                                value: true,
+                                message: "Es necesario verificar su clave"
+
+                            },
+                            validate: (value) => {
+                                if (!errors.passsword) return value === watch("passsword") || "Las claves no coinciden"
+                            }
+                        })}
+                        id='repeatPasswordRegister'
+                        type="password"
+                    />
+                    {
+                        errors.confirmarPassword && <span>{errors.confirmarPassword.message} </span>
+                    }
                 </div>
+
             </div>
-            {errorClave && <p>La clave no coincide</p>}
             <div>
                 <button>Regitrarme</button>
             </div>
-        </form>
+        </form >
     )
 }
 

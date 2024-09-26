@@ -4,7 +4,11 @@
     background-color: #eee;
 }
 
-
+.contenedorPageLogin span {
+    display: block;
+    color: tomato;
+    font-size: x-small;
+}
 
 
 .contenedorFormLogin {

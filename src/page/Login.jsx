@@ -9,6 +9,10 @@ import "../styles/register.css"
 
 
 function Login() {
+
+
+
+
     return (
         <div className='contenedorPageLogin'>
             <Nav contenido={<FormLogin />} />

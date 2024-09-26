@@ -1,7 +1,7 @@
-function SelectOptionPaises({ setPais }) {
+function SelectOptionPaises({ register }) {
     return (
         <div>
-            <select name="pais" className="form-control" onChange={e => setPais(e.target.value)}>
+            <select {...register("pais")} name="pais" className="form-control">
                 <option value="CL">Chile</option>
                 <option value="AF">Afghanistan</option>
                 <option value="AL">Albania</option>

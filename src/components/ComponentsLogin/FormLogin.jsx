@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { userLogin } from '../../services/login'
 import { useNavigate } from 'react-router-dom'
-import { validateEmail } from '../../helpers/ValidateEmail'
+import { useForm } from 'react-hook-form'
 
 
 function FormLogin() {
-    const [email, setEmail] = useState(undefined)
-    const [password, setPassword] = useState(undefined)
-    const [mantenerSesion, setMantenerSesion] = useState(true)
-    const [errorEmail, serErrorEmail] = useState(false);
-
     const navigate = useNavigate()
+
+    const { register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+        setError
+
+    } = useForm({
+        defaultValues: {
+            mantenerSesion: true
+        }
+    })
+
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -21,40 +29,71 @@ function FormLogin() {
 
 
 
-    async function handlerseubmit(e) {
-        e.preventDefault();
-        const res = await userLogin(email, password)
-        if (res.token && mantenerSesion) {
+    const onSubmit = handleSubmit(async (data) => {
+        const res = await userLogin(data.emailLogin, data.passwordLogin)
+        console.log(res)
+        if (res.token && data.mantenerSesion) {
             localStorage.setItem('token', res.token);
             localStorage.setItem('idUser', res.idUser);
             navigate('/home/post');
-        } else if (!mantenerSesion) {
+            reset()
+        } else if (!data.mantenerSesion) {
             navigate('/home/post');
             localStorage.setItem('idUser', res.idUser);
         } else {
+            setError("emailLogin", {
+                type: "manual",
+                message: "Correo o clave errada"
+            });
             console.log("No se recibió un token en la respuesta");
         }
-    }
+    })
+
 
     return (
-        <form className='formularioLogin' onSubmit={e => handlerseubmit(e)}>
+        <form className='formularioLogin' onSubmit={onSubmit}>
             <div>
                 <label htmlFor="">Email:</label>
-                <input id='emailLogin' type="email" onChange={(e) => {
-                    if (validateEmail(e.target.value)) {
-                        setEmail(e.target.value)
-                        serErrorEmail(false)
-                    } else serErrorEmail(true)
-                }} />
-                {errorEmail && <p>lol</p>}
+                <input {...register("emailLogin",
+                    {
+                        required: {
+                            value: true,
+                            message: "El correo es requerido"
+                        },
+                        pattern: {
+                            value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,4})$/,
+                            message: "Correo no valido"
+                        }
+                    }
+                )}
+                    id='emailLogin'
+                    type="email" />
+                {
+                    errors.emailLogin && <span>{errors.emailLogin.message} </span>
+                }
             </div>
+
             <div>
                 <label htmlFor="passwordLogin">Password:</label>
-                <input id='passwordLogin' type="password" onChange={(e) => setPassword(e.target.value)} />
+                <input {...register("passwordLogin", {
+                    required: {
+                        value: true,
+                        message: "La clave es requerida"
+                    },
+                })
+                }
+                    id='passwordLogin'
+                    type="password"
+                />
+                {
+                    errors.passwordLogin && <span>{errors.passwordLogin.message} </span>
+                }
             </div>
-            <div>
 
-                <input id='mantSesion' type="checkbox" checked={mantenerSesion} onChange={e => setMantenerSesion(e.target.checked)} />
+            <div>
+                <input {...register("mantenerSesion")}
+                    id='mantSesion' type="checkbox"
+                />
                 <label htmlFor="mantSesion">Mantener sesión</label>
             </div>
             <button>Ingresar</button>

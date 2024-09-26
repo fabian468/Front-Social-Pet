@@ -38,7 +38,7 @@ export async function userRegister(name, email, country, password, image) {
         });
 
         if (!res.ok) {
-            return false
+            return await res.json()
         }
 
         const data = await res.json();
