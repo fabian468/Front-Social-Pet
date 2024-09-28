@@ -9,6 +9,7 @@ import PerfilUser from './PerfilUser'
 import StateUserGlobal from '../context/StateUserGlobal'
 import ContenidoParaNavPrincipal from '../components/ComponentsPrincipal/ContenidoParaNavPrincipal'
 import Friends from './Friends'
+import Help from './Help'
 
 function Principal() {
 
@@ -24,7 +25,7 @@ function Principal() {
                             <Route path='perfil' element={<PerfilUser />} />
                             <Route path='perfil/:user/:id' element={<PerfilUser />} />
                             <Route path='friends' element={<Friends />} />
-
+                            <Route path='help' element={<Help />} />
                         </Routes>
                         <Anuncios />
                     </div>

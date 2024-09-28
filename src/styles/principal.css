@@ -97,7 +97,8 @@
 
 .contenedorPosts,
 .contenedorPerfilUser,
-.contenedorAllFriends {
+.contenedorAllFriends,
+.contendorHelping {
     width: 40%;
     padding: 1em;
     position: relative;
