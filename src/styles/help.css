@@ -1,0 +1,36 @@
+.ContenedorSliderHorizontal {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    padding: 10px;
+    min-height: 300px;
+}
+
+.Slider {
+    display: inline-flex;
+}
+
+.Slide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-right: 30px;
+    background-color: #eee;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 5px;
+    height: 100%;
+    align-items: center;
+}
+
+.Slide video {
+    width: 100%;
+    max-width: 300px;
+}
+
+.Slide button {
+    position: absolute;
+    bottom: 0;
+}

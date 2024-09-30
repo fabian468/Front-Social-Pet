@@ -38,6 +38,7 @@ function NavbarConDatos({ dataUser }) {
                         Ayudas
                     </NavLink>
                 </li>
+                {  /*
                 <li>
                     <NavLink
                         to={"shop"}
@@ -46,6 +47,7 @@ function NavbarConDatos({ dataUser }) {
                         Tienda
                     </NavLink>
                 </li>
+                */}
             </ul>
         </div >
     )
