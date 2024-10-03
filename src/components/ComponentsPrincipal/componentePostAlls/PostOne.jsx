@@ -4,6 +4,7 @@ import CommentsPost from './CommentsPost';
 import FormComentPost from './FormComentPost';
 import { deletePost } from '../../../services/posts';
 import { useToggleButton } from '../../../hooks/useToggleButton';
+import { Link } from 'react-router-dom';
 
 function PostOne({ data }) {
     const { despliegueComentario, toggleComentario } = useToggleButton();
@@ -23,10 +24,16 @@ function PostOne({ data }) {
                         </div>
                         <p className='contenidoPost'>{d.content}</p>
 
-                        <img src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />
+                        <Link to={"../caso/" + d._id}>
+                            <img src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />
+                        </Link>
 
-                        <p className='despliegueComentarios' onClick={() => toggleComentario(d._id)}>Comentarios ({d.comments.length})</p>
-
+                        <div className='contenedorCaracteristicasPost'>
+                            <p>Me gusta</p>
+                            <p>Seguir caso</p>
+                            <Link to={"../caso/" + d._id}>Más info</Link>
+                            <p className='despliegueComentarios' onClick={() => toggleComentario(d._id)}>Comentarios ({d.comments.length})</p>
+                        </div>
                         {despliegueComentario === d._id && (
                             <>
                                 <div className='contenedorTotalComentarios'>

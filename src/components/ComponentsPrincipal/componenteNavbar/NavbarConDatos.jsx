@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import imgHome from "../../../img/casa-de-perro.png"
+import perroPng from "../../../img/perro.png"
 
 function NavbarConDatos({ dataUser }) {
     return (
@@ -11,6 +13,7 @@ function NavbarConDatos({ dataUser }) {
                     to="post"
                     className={({ isActive }) => (isActive ? 'active' : 'noactive')}
                 >
+                    <img src={imgHome} alt="Home" style={{ width: '20px', marginRight: '8px' }} />
                     Home
                 </NavLink>
                 </li>
@@ -19,6 +22,7 @@ function NavbarConDatos({ dataUser }) {
                         to={"perfil"}
                         className={({ isActive }) => (isActive ? 'active' : 'noactive')}
                     >
+
                         Perfil
                     </NavLink>
                 </li>
@@ -27,6 +31,7 @@ function NavbarConDatos({ dataUser }) {
                         to={"friends"}
                         className={({ isActive }) => (isActive ? 'active' : 'noactive')}
                     >
+                        <img src={perroPng} alt="Home" style={{ width: '20px', marginRight: '8px' }} />
                         Amigos
                     </NavLink>
                 </li>
@@ -35,7 +40,7 @@ function NavbarConDatos({ dataUser }) {
                         to={"help"}
                         className={({ isActive }) => (isActive ? 'active' : 'noactive')}
                     >
-                        Ayudas
+                        Siguiendo
                     </NavLink>
                 </li>
                 {  /*

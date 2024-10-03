@@ -20,6 +20,7 @@ function FormRegister() {
 
     const onSubmit = handleSubmit(async (data) => {
         const res = await userRegister(data.nombre, data.email, data.pais, data.password, data.avatar[0])
+
         if (res.message === "Usuario registrado exitosamente") {
             localStorage.setItem('token', res.token);
             localStorage.setItem('idUser', res.user._id);
@@ -98,7 +99,7 @@ function FormRegister() {
             <div className='sectionrow'>
                 <div>
                     <label htmlFor="passwordLogin">Clave:</label>
-                    <input {...register("passsword",
+                    <input {...register("password",
                         {
                             required: {
                                 value: true,
@@ -113,7 +114,7 @@ function FormRegister() {
                         type="password"
                     />
                     {
-                        errors.passsword && <span>{errors.passsword.message} </span>
+                        errors.password && <span>{errors.password.message} </span>
                     }
 
                 </div>
@@ -128,7 +129,7 @@ function FormRegister() {
 
                             },
                             validate: (value) => {
-                                if (!errors.passsword) return value === watch("passsword") || "Las claves no coinciden"
+                                if (!errors.password) return value === watch("password") || "Las claves no coinciden"
                             }
                         })}
                         id='repeatPasswordRegister'

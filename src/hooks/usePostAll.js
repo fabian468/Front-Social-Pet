@@ -23,7 +23,7 @@ export function usePostAll() {
 
 
         fetchPosts()
-    }, [data])
+    }, [])
 
     return {
         data, loading, error

@@ -1,36 +1,66 @@
+.contendorHelping {
+    width: 100%;
+    padding: 1em;
+}
+
 .ContenedorSliderHorizontal {
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
     width: 100%;
-    padding: 10px;
     min-height: 300px;
+    padding: 10px;
 }
 
 .Slider {
-    display: inline-flex;
+    display: flex;
 }
 
 .Slide {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 3px;
     margin-right: 30px;
-    background-color: #eee;
-    width: 200px;
+    background-color: #ccc;
+    width: 100%;
     box-sizing: border-box;
-    padding: 5px;
-    height: 100%;
+    border-radius: 10px;
     align-items: center;
+    padding: .5em;
 }
 
 .Slide video {
-    width: 100%;
-    max-width: 300px;
+    width: 200px;
+
 }
 
 .Slide button {
     position: absolute;
     bottom: 0;
+}
+
+.TituloVideoHelp {
+    color: #111;
+    position: absolute;
+    left: 1em;
+}
+
+.animacionopacity {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.Slide:hover .animacionopacity {
+    opacity: 1;
+    animation: fadeIn .4s linear;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

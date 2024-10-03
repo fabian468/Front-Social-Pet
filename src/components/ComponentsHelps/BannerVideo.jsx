@@ -11,6 +11,29 @@ function BannerVideo() {
     if (loading) return <div className='contenedorPosts'>Loading...</div>
     if (error) return <div>Error: {error.message}</div>
 
+    const playVideoClick = (e, id) => {
+        const video = e.target;
+        if (reproduccionManual !== id) {
+            setReproduccionManual(id)
+            video.muted = false;
+            video.play();
+        } else {
+            video.pause();
+            setReproduccionManual()
+        }
+
+    }
+
+    const playVideoOnmouse = (e) => {
+        const video = e.target;
+        video.play()
+        video.muted = true;
+    }
+
+    const pauseVideoLeaveMouse = (e, id) => {
+        if (reproduccionManual !== id) e.target.pause()
+
+    }
 
     return (
         <div className='ContenedorSliderHorizontal'>
@@ -22,7 +45,7 @@ function BannerVideo() {
                             .reverse()
                             .map((datosHelps) =>
                                 <div key={datosHelps._id} className='Slide'>
-
+                                    <p className='TituloVideoHelp animacionopacity'>{datosHelps.Titulo} </p>
                                     <video
                                         loop
                                         muted
@@ -30,22 +53,18 @@ function BannerVideo() {
                                         width={300}
                                         height={300}
                                         onClick={(e) => {
-                                            const video = e.target;
-                                            if (reproduccionManual !== datosHelps._id) {
-                                                setReproduccionManual(datosHelps._id)
-                                                video.muted = false;
-                                                video.play();
-                                            } else {
-                                                video.pause();
-                                                setReproduccionManual()
-                                            }
+                                            playVideoClick(e, datosHelps._id)
                                         }}
-                                        onMouseEnter={(e) => { e.target.play() }}
-                                        onMouseLeave={(e) => { if (reproduccionManual !== datosHelps._id) e.target.pause() }}
+                                        onMouseEnter={(e) => {
+                                            playVideoOnmouse(e)
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            pauseVideoLeaveMouse(e, datosHelps._id)
+                                        }}
                                         style={{ cursor: 'pointer' }}
                                     />
 
-                                    <button>Seguir caso</button>
+                                    <button className='animacionopacity'>Seguir caso</button>
 
                                 </div>
                             )

@@ -23,8 +23,16 @@
     z-index: 100;
 }
 
+
+
+.contenedorFormLogin h1 {
+    color: #fff;
+    text-decoration: none;
+}
+
 .contenedorFormLogin b {
     color: red;
+    text-decoration: none;
 }
 
 .formularioLogin {
@@ -56,33 +64,30 @@
 }
 
 
-.linkNoTengoCuenta {
-    text-decoration: none;
-    font-weight: 700;
-    color: #ffffff;
-}
 
 .slider {
-    width: 40%;
-    height: 35vh;
+    position: absolute;
+    width: 50%;
+    margin-left: 1em;
+    border-radius: 10em;
+
+
 }
 
 .slider img {
-    width: 95%;
-    border-radius: 10rem 5rem 10rem 5rem;
-    box-shadow: 10px 5px 5px #ccc;
+    width: 100%;
+    border-radius: 3em;
+    object-fit: contain;
 }
 
 .contenedorContenidoLogin {
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100%;
-    gap: 10px;
+    align-items: center;
 }
 
 .contenedorTextoLogin {
-
     width: 30rem;
     height: 60vh;
     border-radius: 30px;

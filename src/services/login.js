@@ -11,7 +11,7 @@ export async function userLogin(email, password) {
         });
 
         if (!res.ok) {
-            return false
+            return res.json()
         }
 
         const data = await res.json();
@@ -28,7 +28,6 @@ export async function userRegister(name, email, country, password, image) {
     formData.append('country', country);
     formData.append('password', password);
     formData.append('image', image);
-    console.log(image)
     try {
         const res = await fetch(URI + "users", {
             method: "POST",
@@ -42,7 +41,6 @@ export async function userRegister(name, email, country, password, image) {
         }
 
         const data = await res.json();
-        console.log("registro exitoso");
         return data;
     } catch (e) {
         console.error(e)

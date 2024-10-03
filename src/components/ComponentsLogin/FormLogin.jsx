@@ -31,6 +31,7 @@ function FormLogin() {
 
     const onSubmit = handleSubmit(async (data) => {
         const res = await userLogin(data.emailLogin, data.passwordLogin)
+
         if (res.token && data.mantenerSesion) {
             localStorage.setItem('token', res.token);
             localStorage.setItem('idUser', res.idUser);
@@ -44,7 +45,7 @@ function FormLogin() {
                 type: "manual",
                 message: "Correo o clave errada"
             });
-            console.log("No se recibió un token en la respuesta");
+            console.log("No se recibió un token en la respuesta", res);
         }
     })
 

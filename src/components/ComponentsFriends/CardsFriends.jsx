@@ -11,14 +11,14 @@ function CardsFriends() {
     if (loading) return <div className='contenedorPosts'>Loading...</div>
     if (error) return <div>Error: {error.message}</div>
 
-    console.log(data)
     return (
         <>
             {
                 data ? data.map((d) => {
                     return (
-                        <Link to={"../perfil/" + d.name + "/" + d._id}>
-                            <div key={d._id} className='contenedorCardAmistad'>
+                        <Link key={d._id} to={"../perfil/" + d.name + "/" + d._id}>
+                            <div className='contenedorCardAmistad'>
+                                <p>{d.Titulo}</p>
                                 <img src={URIIMG + d.image.replace(/\\/g, '/')} alt="" />
                                 <div className='ContenedorInfoFriends'>
                                     <p>{d.name}</p>

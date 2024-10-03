@@ -1,6 +1,4 @@
 .formularioRegistro {
-    margin: 8rem 2rem 0 0;
-
     max-width: 50em;
     min-width: 10em;
     width: 40em;
@@ -14,7 +12,8 @@
     color: #fff;
     text-align: center;
     justify-content: space-between;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    margin-right: 1em;
 }
 
 

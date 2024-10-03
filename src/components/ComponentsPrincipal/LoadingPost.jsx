@@ -2,6 +2,7 @@ import React from 'react'
 import InputPost from './InputPost'
 import { usePostAll } from '../../hooks/usePostAll';
 import PostOne from './componentePostAlls/PostOne';
+import Help from '../../page/Help';
 
 
 function LoadingPost() {
@@ -17,6 +18,7 @@ function LoadingPost() {
                 <InputPost />
             </div>
             <hr />
+            <Help />
             {!data ? (
                 <div>No posts available</div>
             ) : (
