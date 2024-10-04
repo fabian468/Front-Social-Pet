@@ -110,7 +110,7 @@ function FormRegister() {
                                 message: "La clave de tener al menos 6 caracteres"
                             },
                         })}
-                        id='passwordLogin'
+                        id='passwordRegister'
                         type="password"
                     />
                     {

@@ -237,7 +237,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 70vh;
 
 
@@ -273,3 +273,41 @@
 
 
 /*=============================*/
+
+/* Estilos generales para el contenedor y las imágenes */
+.container {
+    display: flex;
+    flex-direction: column;
+    /* Coloca las imágenes en columnas para que se desplieguen hacia abajo */
+    width: 100%;
+    height: 400vh;
+    position: relative;
+    /* Aumentamos la altura para tener suficiente espacio para el scroll */
+}
+
+.left,
+.right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Cada imagen ocupará toda la altura de la ventana */
+}
+
+.left {
+    float: left;
+    /* Alineamos las imágenes de la izquierda */
+}
+
+.right {
+    float: right;
+    /* Alineamos las imágenes de la derecha */
+}
+
+img {
+    width: 100%;
+    /* Las imágenes ocuparán el 100% de su contenedor */
+    height: auto;
+    object-fit: cover;
+}
