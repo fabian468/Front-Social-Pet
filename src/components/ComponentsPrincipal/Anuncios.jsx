@@ -2,9 +2,9 @@ import React from 'react'
 
 function Anuncios() {
     return (
-        <div className='contenedorAnuncios'>
+        <article className='contenedorAnuncios'>
             Anuncios
-        </div>
+        </article>
     )
 }
 

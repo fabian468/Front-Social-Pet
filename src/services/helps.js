@@ -3,7 +3,7 @@ import { URIIMG } from "../config"
 
 export async function getAllHelps() {
     try {
-        const res = await fetch(URIIMG + "/api/helps")
+        const res = await fetch(URIIMG + "/post/helps")
 
         if (!res.ok) {
             return false

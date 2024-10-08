@@ -5,6 +5,7 @@ import FormComentPost from './FormComentPost';
 import { deletePost } from '../../../services/posts';
 import { useToggleButton } from '../../../hooks/useToggleButton';
 import { Link } from 'react-router-dom';
+import { URIIMG } from '../../../config';
 
 function PostOne({ data }) {
     const { despliegueComentario, toggleComentario } = useToggleButton();
@@ -20,19 +21,20 @@ function PostOne({ data }) {
                             <MdDelete className='tarroDelete' onClick={() => deletePost(d._id)} />
                         )}
                         <div>
-                            <p className='autorPost'>{d.author ? d.author.name : d.content}</p>
+                            <p className='autorPost'>{d.author ? d.author.name : d.Comment}</p>
                         </div>
-                        <p className='contenidoPost'>{d.content}</p>
+                        <p className='contenidoPost'>{d.content ? d.content : d.Comment}</p>
 
                         <Link to={"../caso/" + d._id}>
-                            <img src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />
+                            {d.image && <img src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />}
+                            {d.video && <video autoPlay controls src={URIIMG + "/" + d.video} alt="" />}
                         </Link>
 
                         <div className='contenedorCaracteristicasPost'>
                             <p>Me gusta</p>
                             <p>Seguir caso</p>
                             <Link to={"../caso/" + d._id}>Más info</Link>
-                            <p className='despliegueComentarios' onClick={() => toggleComentario(d._id)}>Comentarios ({d.comments.length})</p>
+                            {d.comments && <p className='despliegueComentarios' onClick={() => toggleComentario(d._id)}>Comentarios ({d.comments.length})</p>}
                         </div>
                         {despliegueComentario === d._id && (
                             <>

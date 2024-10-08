@@ -48,6 +48,40 @@ export async function createPost(content, image, author) {
     }
 }
 
+export async function createHelp(content, image, author, nombredelAnimal, ubicacionAnimal, tipoAyudaNecesitada) {
+    const formData = new FormData();
+    formData.append('Comment', content);
+    formData.append('video', image);
+    formData.append('author', author);
+    formData.append('nombredelAnimal', nombredelAnimal);
+    formData.append('ubicacionAnimal', ubicacionAnimal);
+    formData.append('tipoAyudaNecesitada', tipoAyudaNecesitada);
+
+    try {
+        const response = await fetch(URI + 'helps', {
+            method: 'POST',
+            body: formData, // Enviar formData directamente
+            headers: {
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al crear el post');
+        }
+
+        const result = await response.json();
+        if (result) {
+            return result
+        } else {
+            alert("error")
+        }
+
+    } catch (error) {
+        console.error('Error al crear el post:', error);
+    }
+}
+
+
 
 export async function deletePost(idPost) {
 

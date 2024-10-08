@@ -11,6 +11,7 @@ import ContenidoParaNavPrincipal from '../components/ComponentsPrincipal/Conteni
 import Friends from './Friends'
 import Help from './Help'
 import Casos from './Casos'
+import Bienvenida from './Bienvenida'
 
 function Principal() {
 
@@ -19,9 +20,10 @@ function Principal() {
             <div>
                 <Nav contenido={<ContenidoParaNavPrincipal />} />
                 <div className='contenedorformPrincipal'>
-                    <div className='ContenedorPrincipalPost'>
+                    <main className='ContenedorPrincipalPost'>
                         <NavbarPrincipal />
                         <Routes>
+                            <Route path='welcome' element={<Bienvenida />} />
                             <Route path='post' element={<LoadingPost />} />
                             <Route path='perfil' element={<PerfilUser />} />
                             <Route path='perfil/:user/:id' element={<PerfilUser />} />
@@ -29,8 +31,9 @@ function Principal() {
                             <Route path='help' element={<Help />} />
                             <Route path='caso/:id' element={<Casos />} />
                         </Routes>
+
                         <Anuncios />
-                    </div>
+                    </main>
                 </div>
             </div>
         </StateUserGlobal>

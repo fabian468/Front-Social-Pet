@@ -80,7 +80,24 @@
 
 /* =========================== */
 
+.contenedorBienvenida h2 {
+    font-size: 5em;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
 
+.contenedorBienvenida h2 strong {
+    color: red;
+    text-decoration: none;
+}
+
+.contenedorBienvenida p {}
+
+
+
+/* =========================== */
 .ContenedorPrincipalPost {
     display: flex;
 
@@ -95,10 +112,13 @@
     top: 5em;
 }
 
+
+
 .contenedorPosts,
 .contenedorPerfilUser,
 .contenedorAllFriends,
-.contenedorCasos {
+.contenedorCasos,
+.contenedorBienvenida {
     width: 60%;
     padding: 1em;
     position: relative;
@@ -123,6 +143,22 @@
     justify-content: center;
 }
 
+.formAdicionalAyuda {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.formAdicionalAyuda input,
+select {
+    outline: none;
+    padding: .2em;
+    border-radius: .5em;
+    border: 1px solid #bbb;
+    margin-left: .7em;
+}
 
 
 .tarroDelete {

@@ -1,13 +1,12 @@
 .contendorHelping {
     width: 100%;
-    padding: 1em;
+
 }
 
 .ContenedorSliderHorizontal {
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
-    width: 100%;
     min-height: 300px;
     padding: 10px;
 }
@@ -22,7 +21,6 @@
     flex-direction: column;
     margin-right: 30px;
     background-color: #ccc;
-    width: 100%;
     box-sizing: border-box;
     border-radius: 10px;
     align-items: center;

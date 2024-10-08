@@ -7,7 +7,7 @@ import Help from '../../page/Help';
 
 function LoadingPost() {
 
-    const { data, loading, error } = usePostAll()
+    const { data, loading, error, setData } = usePostAll()
 
     if (loading) return <div className='contenedorPosts'>Loading...</div>
     if (error) return <div>Error: {error.message}</div>
@@ -15,7 +15,7 @@ function LoadingPost() {
     return (
         <div className='contenedorPosts' >
             <div className='ContenedorInputPost'>
-                <InputPost />
+                <InputPost setData={setData} datos={data} />
             </div>
             <hr />
             <Help />

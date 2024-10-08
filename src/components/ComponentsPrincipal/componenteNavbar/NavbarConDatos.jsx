@@ -7,17 +7,27 @@ import carinoso from "../../../img/carinoso.png"
 
 function NavbarConDatos({ dataUser }) {
     return (
-        <div >
+        <nav >
             <p className='contenedorBienvenido'> Bienvenido: {dataUser.name}</p >
 
             <ul className='ContenedorNavbarPrincipal'>
-                <li><NavLink
-                    to="post"
-                    className={({ isActive }) => (isActive ? 'active' : 'noactive')}
-                >
-                    <img src={imgHome} alt="Home" style={{ width: '20px', marginRight: '8px' }} />
-                    Home
-                </NavLink>
+                <li>
+                    <NavLink
+                        to="welcome"
+                        className={({ isActive }) => (isActive ? 'active' : 'noactive')}
+                    >
+                        <img src={imgHome} alt="Home" style={{ width: '20px', marginRight: '8px' }} />
+                        Bienvenido
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="post"
+                        className={({ isActive }) => (isActive ? 'active' : 'noactive')}
+                    >
+                        <img src={imgHome} alt="Home" style={{ width: '20px', marginRight: '8px' }} />
+                        Home
+                    </NavLink>
                 </li>
                 <li>
                     <NavLink
@@ -58,7 +68,7 @@ function NavbarConDatos({ dataUser }) {
                 </li>
                 */}
             </ul>
-        </div >
+        </nav >
     )
 }
 
