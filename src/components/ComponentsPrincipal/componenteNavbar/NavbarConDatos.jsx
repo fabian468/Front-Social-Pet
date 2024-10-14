@@ -4,11 +4,26 @@ import imgHome from "../../../img/casa-de-perro.png"
 import perroPng from "../../../img/perro.png"
 import ganado from "../../../img/ganado.png"
 import carinoso from "../../../img/carinoso.png"
+import ImagePerfil from '../componentePostAlls/ImagePerfil'
+
+
 
 function NavbarConDatos({ dataUser }) {
+
     return (
         <nav >
-            <p className='contenedorBienvenido'> Bienvenido: {dataUser.name}</p >
+            <div style={{
+                display: "flex",
+                marginTop: "30px",
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                textAlign: "center",
+                width: "50%"
+
+            }}>
+                <ImagePerfil dataUser={dataUser} width2={"60px"} height2={"60px"} />
+                <p className='contenedorBienvenido'> {dataUser.name}</p>
+            </div>
 
             <ul className='ContenedorNavbarPrincipal'>
                 <li>

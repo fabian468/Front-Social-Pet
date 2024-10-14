@@ -6,6 +6,7 @@ import { deletePost } from '../../../services/posts';
 import { useToggleButton } from '../../../hooks/useToggleButton';
 import { Link } from 'react-router-dom';
 import { URIIMG } from '../../../config';
+import ImagePerfil from './ImagePerfil';
 
 function PostOne({ data }) {
     const { despliegueComentario, toggleComentario } = useToggleButton();
@@ -20,7 +21,8 @@ function PostOne({ data }) {
                         {canUserDeletePost(d.author._id) && (
                             <MdDelete className='tarroDelete' onClick={() => deletePost(d._id)} />
                         )}
-                        <div>
+                        <div style={{ display: "flex", gap: "10px" }}>
+                            <ImagePerfil dataUser={d.author} width2={"40px"} height2={"40px"} />
                             <p className='autorPost'>{d.author ? d.author.name : d.Comment}</p>
                         </div>
                         <p className='contenidoPost'>{d.content ? d.content : d.Comment}</p>

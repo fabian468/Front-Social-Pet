@@ -220,14 +220,17 @@ select {
 .contenedorTotalComentarios {
     display: flex;
     justify-content: center;
+    margin: 10px 0 10px 0;
 }
 
 .contenedorComments {
     background-color: #eee;
     border-radius: 2em;
     padding: .8em;
-    margin: .5em;
+    margin: .3em;
     min-width: 450px;
+    display: flex;
+    align-items: center;
 
 }
 
