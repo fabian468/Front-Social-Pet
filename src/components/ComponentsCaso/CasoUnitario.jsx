@@ -8,7 +8,6 @@ import img4 from "../../img/img_2.jpg";
 function CasoUnitario() {
     const { scrollYProgress } = useScroll();
 
-
     const opacity2 = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
     const opacity3 = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
     const opacity4 = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);

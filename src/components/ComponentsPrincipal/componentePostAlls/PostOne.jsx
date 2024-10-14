@@ -16,7 +16,7 @@ function PostOne({ data }) {
                 .slice()
                 .reverse()
                 .map((d) => (
-                    <div key={d._id}>
+                    <div className='contenedorPost' key={d._id}>
                         {canUserDeletePost(d.author._id) && (
                             <MdDelete className='tarroDelete' onClick={() => deletePost(d._id)} />
                         )}

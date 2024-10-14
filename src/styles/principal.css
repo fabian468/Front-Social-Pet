@@ -124,17 +124,35 @@
     position: relative;
 }
 
-
+.contenedorPosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
 
 .autorPost {
     font-weight: 600;
     font-size: 15px;
 }
 
-.contenedorPosts img {
+
+
+.contenedorPosts img,
+video {
     width: 100%;
     margin: auto;
 }
+
+.contenedorPost {
+    position: relative;
+    width: 70%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
 
 .contenidoPost {
     font-size: 19px;
