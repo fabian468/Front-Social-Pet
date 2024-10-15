@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { URIIMG } from '../../../config';
 import ImagePerfil from './ImagePerfil';
 
-function PostOne({ data }) {
+function PostOne({ data, needImage = true }) {
     const { despliegueComentario, toggleComentario } = useToggleButton();
 
     return (
@@ -18,11 +18,11 @@ function PostOne({ data }) {
                 .reverse()
                 .map((d) => (
                     <div className='contenedorPost' key={d._id}>
-                        {canUserDeletePost(d.author._id) && (
+                        {canUserDeletePost(d.author._id ? d.author._id : d.author) && (
                             <MdDelete className='tarroDelete' onClick={() => deletePost(d._id)} />
                         )}
                         <div style={{ display: "flex", gap: "10px" }}>
-                            <ImagePerfil dataUser={d.author} width2={"40px"} height2={"40px"} />
+                            {needImage && <ImagePerfil dataUser={d.author ? d.author : d} width2={"40px"} height2={"40px"} />}
                             <p className='autorPost'>{d.author ? d.author.name : d.Comment}</p>
                         </div>
                         <p className='contenidoPost'>{d.content ? d.content : d.Comment}</p>

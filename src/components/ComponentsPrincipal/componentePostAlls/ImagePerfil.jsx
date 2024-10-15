@@ -3,6 +3,9 @@ import { URIIMG } from '../../../config'
 import avatar from "../../../img/avatar.jpg";
 
 function ImagePerfil({ dataUser, width2, height2 }) {
+
+
+
     return (
         <div>
             <img

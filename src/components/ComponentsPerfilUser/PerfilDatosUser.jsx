@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import { stateCompo } from '../../context/stateCompo';
 import PostOfUser from './PostOfUser';
-import avatar from "../../img/avatar.jpg";
 import PerfilUserFriends from './PerfilUserFriends';
 import { useParams } from 'react-router-dom';
-import { URIIMG } from '../../config';
+import ImagePerfil from '../ComponentsPrincipal/componentePostAlls/ImagePerfil';
 
 function PerfilDatosUser() {
     const { dataUser } = useContext(stateCompo);
@@ -15,7 +14,7 @@ function PerfilDatosUser() {
         <div>
             {!id ? (
                 <div>
-                    <img className="imgAvatar" src={dataUser.image ? URIIMG + dataUser.image.replace(/\\/g, '/') : avatar} alt="avatar socialPet" />
+                    <ImagePerfil dataUser={dataUser} width2={"200px"} height2={"200px"} />
                     <h2>{dataUser.name}</h2>
                     <hr />
                     <PostOfUser id={dataUser._id} />

@@ -1,26 +1,15 @@
 import { usePostUser } from '../../hooks/usePostUser'
+import PostOne from '../ComponentsPrincipal/componentePostAlls/PostOne'
 
 function PostOfUser({ id }) {
 
     const { postUserPerfil } = usePostUser(id)
 
-
     return (
-        <div>
+        <div style={{ display: "flex", alignItems: "center", flexDirection: "column", gap: "30px" }} >
             {postUserPerfil ?
-                postUserPerfil
-                    .slice()
-                    .reverse()
-                    .map((data) => {
-                        return (
-                            <div key={data._id}>
-                                <p>{data.content} </p>
-                                <img className='imgPostsPerfilUser' src={`http://localhost:4000${data.image.replace(/\\/g, '/')}`} alt="" />
-                            </div>
-                        )
-                    }) :
+                <PostOne data={postUserPerfil} needImage={true} /> :
                 <p>No hay posts</p>
-
             }
         </div>
     )
