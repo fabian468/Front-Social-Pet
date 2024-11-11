@@ -50,7 +50,7 @@ export async function createPost(content, image, author) {
 
 export async function createHelp(content, image, author, nombredelAnimal, ubicacionAnimal, tipoAyudaNecesitada) {
     const formData = new FormData();
-    formData.append('Comment', content);
+    formData.append('Titulo', content);
     formData.append('video', image);
     formData.append('author', author);
     formData.append('nombredelAnimal', nombredelAnimal);

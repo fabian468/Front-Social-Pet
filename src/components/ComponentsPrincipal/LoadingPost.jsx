@@ -3,6 +3,7 @@ import InputPost from './InputPost'
 import { usePostAll } from '../../hooks/usePostAll';
 import PostOne from './componentePostAlls/PostOne';
 import Help from '../../page/Help';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 
 function LoadingPost() {
@@ -22,7 +23,9 @@ function LoadingPost() {
             {!data ? (
                 <div>No posts available</div>
             ) : (
-                <PostOne data={data} />
+                <LazyLoadComponent>
+                    <PostOne data={data} />
+                </LazyLoadComponent>
             )}
         </div>
     )

@@ -14,7 +14,7 @@ function LogOut() {
     return (
         <div>
 
-            <div onClick={logout}><MdOutlineLogout /></div>
+            <div style={{ cursor: "pointer" }} onClick={logout}><MdOutlineLogout /></div>
         </div>
     )
 }

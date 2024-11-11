@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import img1 from "../../img/img_1.jpg";
 import img2 from "../../img/img_4.jpg";
 import img3 from "../../img/img_3.jpg";
 import img4 from "../../img/img_2.jpg";
+import Donaciones from './Donaciones';
 
 function CasoUnitario() {
+    const [abrirDonar, setAbrirDonar] = useState(false)
     const { scrollYProgress } = useScroll();
 
     const opacity2 = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
@@ -21,7 +23,11 @@ function CasoUnitario() {
         <div className="container">
 
             <h2>Caso Juanito el gato</h2>
-            <button style={{ zIndex: "1000", cursor: "pointer", border: "none", borderRadius: "30px", position: "fixed", width: "10%", backgroundColor: "green", color: "#fff" }} >Donar</button>
+            <button
+                style={{ zIndex: "1000", cursor: "pointer", border: "none", borderRadius: "30px", position: "fixed", width: "10%", backgroundColor: "green", color: "#fff" }}
+                onClick={() => setAbrirDonar(!abrirDonar)} >Donar
+            </button>
+            {abrirDonar && <Donaciones closeDonation={setAbrirDonar} />}
             <div >
                 <img src={img1} alt="Imagen 1" />
             </div>

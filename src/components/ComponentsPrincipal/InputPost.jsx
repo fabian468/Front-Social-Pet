@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { createHelp, createPost } from '../../services/posts'
 import { useForm } from 'react-hook-form'
 import { usePrevImage } from '../../hooks/usePrevImage';
+import { verificarDuracionVideo, verificarVideo } from '../../helpers/isVideo';
 
 
 
 function InputPost({ setData, datos }) {
+    const [esVideo, setEsVideo] = useState(false);
+    const [videoDuraMasDe2minutos, setvideoDuraMasDe2minutos] = useState(false);
     const { PrevImagen, handleImageChange } = usePrevImage();
+
+
 
     const { register,
         handleSubmit,
@@ -14,6 +19,7 @@ function InputPost({ setData, datos }) {
         watch,
         reset
     } = useForm()
+
 
 
 
@@ -32,7 +38,6 @@ function InputPost({ setData, datos }) {
                 data.direccionAnimal,
                 data.tipoAyuda
             )
-            console.log(nuevaHelp.newHelp)
             setData([...datos, nuevaHelp.newHelp])
 
             reset()
@@ -113,11 +118,22 @@ function InputPost({ setData, datos }) {
                     accept="image/*, video/*"
                     onChange={(e) => {
                         register('image').onChange(e);
+                        setEsVideo(verificarVideo(e.target))
+                        verificarVideo(e.target) && verificarDuracionVideo(e.target, setvideoDuraMasDe2minutos)
                         handleImageChange(e);
+
                     }}
                 />
             </label>
-            {PrevImagen && <img src={PrevImagen} alt="Preview" style={{ width: '300px', marginTop: '20px' }} />}
+
+            {esVideo && videoDuraMasDe2minutos ?
+                <label><input type="checkbox" />¿ Desea colocarlo en el espacio short ? </label> :
+                esVideo &&
+                <p>Si desea colocar el video en short, la duración no debe sobrepasar los 2 minutos</p>}
+
+            {PrevImagen && !esVideo ? <img src={PrevImagen} alt="Preview" style={{ width: '300px', marginTop: '20px' }} /> :
+                PrevImagen && <video autoPlay src={PrevImagen} alt="Preview" style={{ width: '300px', marginTop: '20px' }} />
+            }
             <button>Publicar</button>
         </form>
     )

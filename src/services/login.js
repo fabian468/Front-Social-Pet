@@ -47,3 +47,21 @@ export async function userRegister(name, email, country, password, image) {
     }
 }
 
+export async function modImage(imagen, idUser) {
+    const formData = new FormData();
+    formData.append('image', imagen)
+
+    try {
+        //http://localhost:4000/api/user/66ff3c601e3fe862a3d7f075/image
+        const res = await fetch(URI + "user/" + idUser + "/image", {
+            method: "PUT",
+            body: formData,
+            headers: {
+            }
+        });
+        const data = await res
+        return data
+    } catch (e) {
+        console.log(e)
+    }
+}
