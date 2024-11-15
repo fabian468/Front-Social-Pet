@@ -24,8 +24,23 @@ function CasoUnitario() {
 
             <h2>Caso Juanito el gato</h2>
             <button
-                style={{ zIndex: "1000", cursor: "pointer", border: "none", borderRadius: "30px", position: "fixed", width: "10%", backgroundColor: "green", color: "#fff" }}
+                style={{
+                    zIndex: "1000",
+                    cursor: "pointer", border: "none",
+                    borderRadius: "30px", position: "fixed",
+                    width: "10%", backgroundColor: "green",
+                    color: "#fff"
+                }}
                 onClick={() => setAbrirDonar(!abrirDonar)} >Donar
+            </button>
+            <button
+                style={{
+                    zIndex: "1000",
+                    cursor: "pointer", right: "350px", border: "none",
+                    borderRadius: "30px", position: "fixed", width: "10%",
+                    backgroundColor: "blue", color: "#fff"
+                }}
+                onClick={() => setAbrirDonar(!abrirDonar)} >Seguir caso
             </button>
             {abrirDonar && <Donaciones closeDonation={setAbrirDonar} />}
             <div >
