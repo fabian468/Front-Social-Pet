@@ -83,12 +83,16 @@ export async function createHelp(content, image, author, nombredelAnimal, ubicac
 
 
 
-export async function deletePost(idPost) {
+export async function deletePost(idPost, ishelp) {
 
     try {
-        const response = await fetch(URI + 'posts/' + idPost, {
+        const response = !ishelp ? await fetch(URI + 'posts/' + idPost, {
             method: 'DELETE'
-        });
+        }) :
+            await fetch(URI + 'helps/' + idPost, {
+                method: 'DELETE'
+            })
+
 
         if (!response.ok) {
             throw new Error('Error al eliminar el post');
@@ -148,17 +152,17 @@ export async function commentsPost(postId, userId, comment) {
     }
 }
 
-export async function deleteComments(postId, commentId) {
-
+export async function deleteComments(postId, commentId, isHelps) {
     try {
-        const response = await fetch(URI + 'posts/' + postId + '/comments/' + commentId, {
+        const response = !isHelps ? await fetch(URI + 'posts/' + postId + '/comments/' + commentId, {
             method: 'DELETE'
-        });
+        }) : await fetch(URI + 'helps/' + postId + '/comments/' + commentId, {
+            method: 'DELETE'
+        })
 
         if (!response.ok) {
             throw new Error('Error al eliminar el comentario');
         }
-
         const result = await response.json();
         return result
     } catch (error) {

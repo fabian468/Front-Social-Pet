@@ -4,9 +4,7 @@ import { MdDelete } from 'react-icons/md'
 import { deleteComments } from '../../../services/posts'
 import ImagePerfil from './ImagePerfil'
 
-function CommentsPost({ comments, idPost }) {
-
-
+function CommentsPost({ comments, idPost, ishelps }) {
     return (
         <div>
             {
@@ -20,7 +18,7 @@ function CommentsPost({ comments, idPost }) {
                                 <p className='comentario' >{com.comment} </p>
                             </div>
                             {canUserDeletePost(com.user._id) && (
-                                <MdDelete className='tarroDelete' onClick={() => deleteComments(idPost, com._id)} />
+                                <MdDelete className='tarroDelete' onClick={() => deleteComments(idPost, com._id, ishelps)} />
                             )}
                         </div>
                     </div>

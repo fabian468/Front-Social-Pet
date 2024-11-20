@@ -19,9 +19,9 @@ function LoadingPost() {
                 <InputPost setData={setData} datos={data} />
             </div>
             <hr />
-            <Help />
+            {/*    <Help />*/}
             {!data ? (
-                <div>No posts available</div>
+                <div>No existen post</div>
             ) : (
                 <LazyLoadComponent>
                     <PostOne data={data} />

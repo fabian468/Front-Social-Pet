@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { commentsPost } from '../../../services/posts';
+import { commentsHelps } from '../../../services/helps';
 
 function FormComentPost({ d }) {
 
     const [comentario, setComentario] = useState("")
-
 
     function agregarComentrario(e, idComentario) {
         e.preventDefault()
 
         if (comentario !== "") {
             const id = localStorage.getItem('idUser');
-            commentsPost(idComentario, id, comentario)
+            !d.tipoAyudaNecesitada ? commentsPost(idComentario, id, comentario) : commentsHelps(idComentario, id, comentario)
             if (commentsPost) {
                 setComentario("")
             }

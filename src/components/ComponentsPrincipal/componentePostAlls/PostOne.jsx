@@ -19,11 +19,13 @@ function PostOne({ data, needImage = true }) {
                 .slice()
                 .reverse()
                 .map((d) => (
-                    <LazyLoadComponent key={d._id}>
-                        <div className='contenedorPost' >
 
+                    <LazyLoadComponent key={d._id} >
+
+
+                        <div className='contenedorPost' style={{ backgroundColor: d.tipoAyudaNecesitada ? "darkgreen" : "white", color: d.tipoAyudaNecesitada && "white" }}>
                             {canUserDeletePost(d.author._id ? d.author._id : d.author) && (
-                                <MdDelete className='tarroDelete' onClick={() => deletePost(d._id)} />
+                                <MdDelete className='tarroDelete' onClick={() => deletePost(d._id, d.tipoAyudaNecesitada)} />
                             )}
                             <div style={{ display: "flex", gap: "10px" }}>
                                 {needImage && <ImagePerfil dataUser={d.author ? d.author : d} width2={"40px"} height2={"40px"} />}
@@ -31,12 +33,21 @@ function PostOne({ data, needImage = true }) {
                             </div>
                             <p className='contenidoPost'>{d.content ? d.content : d.Titulo}</p>
 
-                            <Link to={"../caso/" + d._id}>
-                                {d.image && !verificarVideo(d.image) ? <img src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />
-                                    :
-                                    d.image && <video autoPlay controls src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />}
-                                {d.video && <video autoPlay controls src={URIIMG + "/" + d.video} alt="" />}
-                            </Link>
+
+
+                            {d.tipoAyudaNecesitada ?
+                                <Link to={"../caso/" + d._id}>
+                                    {d.image && !verificarVideo(d.image) ? <img src={`http://localhost:4000/${d.image.replace(/\\/g, '/')}`} alt="" />
+                                        :
+                                        d.image && <video autoPlay controls src={`http://localhost:4000/${d.image.replace(/\\/g, '/')}`} alt="" />}
+                                </Link> :
+                                <>
+                                    {d.image && !verificarVideo(d.image) ? <img src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />
+                                        :
+                                        d.image && <video autoPlay controls src={`http://localhost:4000${d.image.replace(/\\/g, '/')}`} alt="" />}
+
+                                </>
+                            }
 
                             <div className='contenedorCaracteristicasPost'>
                                 <p>Me gusta</p>
@@ -47,15 +58,17 @@ function PostOne({ data, needImage = true }) {
                             {despliegueComentario === d._id && (
                                 <>
                                     <div className='contenedorTotalComentarios'>
-                                        <CommentsPost comments={d.comments} idPost={d._id} />
+                                        <CommentsPost comments={d.comments} idPost={d._id} ishelps={d.tipoAyudaNecesitada} />
                                     </div>
                                     <FormComentPost d={d} />
                                 </>
                             )}
                             <hr />
                         </div>
-                    </LazyLoadComponent>
-                ))}
+                    </LazyLoadComponent >
+
+                ))
+            }
         </>
     );
 }
