@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 
-function FormLogin() {
+function FormLogin({ abrirRegistro, setAbrirRegistro }) {
     const navigate = useNavigate()
+
 
     const { register,
         handleSubmit,
@@ -97,6 +98,8 @@ function FormLogin() {
                 <label htmlFor="mantSesion">Mantener sesión</label>
             </div>
             <button>Ingresar</button>
+
+            <p onClick={() => setAbrirRegistro(!abrirRegistro)} className='noTengoCuenta'>no tengo cuenta</p>
 
         </form>
     )

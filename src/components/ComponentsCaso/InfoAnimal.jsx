@@ -1,6 +1,6 @@
 
 function InfoAnimal({ data }) {
-    console.log(data)
+
     return (
         <div>
             <p style={{ textAlign: "center" }}>Autor de la publicación: {data.author.name}</p>

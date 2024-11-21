@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import SelectOptionPaises from './SelectOptionPaises'
 
 
-function FormRegister() {
-
+function FormRegister({ abrirRegistro, setAbrirRegistro }) {
 
     const { register,
         handleSubmit,
@@ -36,7 +35,7 @@ function FormRegister() {
 
 
     return (
-        <form className='formularioRegistro' onSubmit={onSubmit} >
+        <form className={abrirRegistro ? "abrir formularioRegistro" : "cerrar formularioRegistro"} onSubmit={onSubmit} >
             <p>Registrate</p>
             <div className='sectionrow'>
                 <div>

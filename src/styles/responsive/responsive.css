@@ -1,0 +1,60 @@
+@media (width <=1250px) {
+    .contenedorFormLogin {
+        flex-direction: column;
+    }
+
+    /* esto lo cambiare por otro nombre para hidden y watch */
+    .formularioLogin {
+        position: absolute;
+        top: 450px;
+        /* display: none !important; */
+        color: black;
+        flex-direction: column;
+    }
+
+    .contenedorPageLogin {
+        width: 100% !important;
+    }
+
+    .contenedorContenidoLogin {
+        flex-direction: column;
+        justify-content: center !important;
+    }
+
+    .contenedorTextoLogin {
+        flex-direction: row !important;
+        justify-content: space-between;
+        width: 80% !important;
+
+    }
+
+    .slider {
+        width: 85% !important;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+    .cerrar {
+        display: none !important;
+    }
+
+    .abrir {
+        display: flex !important;
+    }
+
+    .formularioRegistro {
+        position: absolute;
+        margin: auto;
+        z-index: 1000;
+        width: 85% !important;
+        height: 70vh !important;
+    }
+}
+
+
+
+@media (width >=1250px) {
+    .noTengoCuenta {
+        display: none;
+    }
+}
