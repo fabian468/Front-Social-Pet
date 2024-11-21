@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import img1 from "../../img/img_1.jpg";
 import img2 from "../../img/img_4.jpg";
 import img3 from "../../img/img_3.jpg";
 import img4 from "../../img/img_2.jpg";
 import Donaciones from './Donaciones';
+import { useParams } from 'react-router-dom';
+import { getOneHelpsId } from '../../services/helps';
+import { URIIMG } from '../../config';
+import { verificarVideo } from '../../helpers/isVideo';
+import InfoAnimal from './InfoAnimal';
 
 function CasoUnitario() {
     const [abrirDonar, setAbrirDonar] = useState(false)
     const { scrollYProgress } = useScroll();
+    const [dataCaso, setDataCaso] = useState([])
+
+    const { id } = useParams()
+
+    useEffect(() => {
+        async function obtenerDatosDeCasos() {
+
+            setDataCaso(await getOneHelpsId(id))
+        }
+        obtenerDatosDeCasos()
+    }, [id])
 
     const opacity2 = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
     const opacity3 = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
@@ -22,7 +37,7 @@ function CasoUnitario() {
     return (
         <div className="container">
 
-            <h2>Caso Juanito el gato</h2>
+            <h2>Caso {dataCaso.nombredelAnimal}</h2>
             <button
                 style={{
                     zIndex: "1000",
@@ -42,13 +57,24 @@ function CasoUnitario() {
                 }}
                 onClick={() => setAbrirDonar(!abrirDonar)} >Seguir caso
             </button>
+
             {abrirDonar && <Donaciones closeDonation={setAbrirDonar} />}
+
             <div >
-                <img src={img1} alt="Imagen 1" />
+                {verificarVideo(`${URIIMG}/${dataCaso.image}`) ? <video autoPlay style={{ aspectRatio: "16/9" }} controls src={`${URIIMG}/${dataCaso.image}`} alt="Imagen 1" /> :
+                    <img style={{ aspectRatio: "16/9" }} src={`${URIIMG}/${dataCaso.image}`} alt="Imagen 1" />
+                }
             </div>
 
-            <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
+            {dataCaso.Titulo && <InfoAnimal data={dataCaso} />}
 
+            {/* {entonces tendria que colocar cada actualizacion del estado del caso del animal aparte 
+en un componente donde le tendre que hacer un map e ir listandola en el casoUnitario y en la home mostrar como post con sus comentarios 
+en ambos lados ejemplo caso juanito mostramos un post principal en el post principal pondre las ramas de actualizacion del animal 
+cuando este agregue una historia de su caso 
+} */}
+
+            <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
                 <motion.div className="left" style={{ x: x2_1, opacity: opacity2 }}>
                     <div>
                         <p> 04/10/2024</p>
@@ -58,8 +84,6 @@ function CasoUnitario() {
                 <motion.div className="right" style={{ x: x2, opacity: opacity2 }}>
                     <img src={img2} alt="Imagen 2" />
                 </motion.div>
-
-
             </div>
 
 

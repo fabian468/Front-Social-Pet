@@ -17,6 +17,24 @@ export async function getAllHelps() {
 
 }
 
+
+export async function getOneHelpsId(id) {
+    try {
+        const res = await fetch(`${URIIMG}/post/helps/${id}`)
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json()
+        return data
+    } catch {
+        console.log("error")
+    }
+
+}
+
+
 export async function commentsHelps(helpId, userId, comment) {
     try {
 
