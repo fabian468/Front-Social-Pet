@@ -6,7 +6,7 @@ import ImagePerfil from './ImagePerfil'
 
 function CommentsPost({ comments, idPost, ishelps }) {
     return (
-        <div>
+        <div className='contenedorDentroComentarios'>
             {
                 comments ? comments.map(com => {
 

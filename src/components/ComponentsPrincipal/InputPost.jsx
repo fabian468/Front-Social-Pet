@@ -52,6 +52,7 @@ function InputPost({ setData, datos }) {
     return (
         <form onSubmit={onSubmit} className='formPost'>
             <textarea
+
                 {...register("content",
                     {
                         validate: (value) => {

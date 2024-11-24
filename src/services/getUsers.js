@@ -1,4 +1,5 @@
-const URI = "http://localhost:4000/api/";
+import { URIIMG } from "../config"
+const URI = `${URIIMG}/api/`
 
 export async function getUser(id) {
     try {

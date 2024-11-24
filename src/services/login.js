@@ -1,7 +1,10 @@
-const URI = "http://localhost:4000/api/";
+import { URIIMG } from "../config"
+
+const URI = `${URIIMG}/api/`
 
 export async function userLogin(email, password) {
     try {
+        console.log(URI + "login")
         const res = await fetch(URI + "login", {
             method: "POST",
             headers: {

@@ -1,0 +1,33 @@
+@media (width <=1250px) {
+    .contenedorNavbarPrincipal {
+        display: none;
+    }
+
+    .contenedorAnuncios {
+        display: none;
+    }
+
+
+    .contenedorPosts {
+        width: 100% !important;
+    }
+
+    .contenedorTotalComentarios {
+
+        background-color: blueviolet;
+    }
+
+    .contenedorDentroComentarios {
+        width: 60% !important;
+    }
+
+    .contenedorCaracteristicasPost {
+        justify-content: center;
+    }
+
+
+}
+
+
+
+@media (width >=1250px) {}

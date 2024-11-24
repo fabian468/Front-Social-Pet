@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import "../../styles/datosAnimales.css"
+
 import img2 from "../../img/img_4.jpg";
 import img3 from "../../img/img_3.jpg";
 import img4 from "../../img/img_2.jpg";
@@ -9,9 +11,12 @@ import { getOneHelpsId } from '../../services/helps';
 import { URIIMG } from '../../config';
 import { verificarVideo } from '../../helpers/isVideo';
 import InfoAnimal from './InfoAnimal';
+import { canUserDeletePost } from '../../helpers/canDeletePost';
+import FormAgregarHistoria from './FormAgregarHistoria';
 
 function CasoUnitario() {
     const [abrirDonar, setAbrirDonar] = useState(false)
+    const [abrirFormAgregarHistoria, setAbrirFormAgregarHistoria,] = useState(false)
     const { scrollYProgress } = useScroll();
     const [dataCaso, setDataCaso] = useState([])
 
@@ -37,7 +42,7 @@ function CasoUnitario() {
     return (
         <div className="container">
 
-            <h2>Caso {dataCaso.nombredelAnimal}</h2>
+            <h2 className='tituloCaso'>Caso {dataCaso.nombredelAnimal}</h2>
             <button
                 style={{
                     zIndex: "1000",
@@ -65,8 +70,12 @@ function CasoUnitario() {
                     <img style={{ aspectRatio: "16/9" }} src={`${URIIMG}/${dataCaso.image}`} alt="Imagen 1" />
                 }
             </div>
+            {canUserDeletePost(dataCaso.author?._id) && <span className='abrirFormAhistoria' onClick={() => setAbrirFormAgregarHistoria(!abrirFormAgregarHistoria)}>Agregar una historia a tu caso</span>}
+
+            {abrirFormAgregarHistoria && <FormAgregarHistoria setcerrar={setAbrirFormAgregarHistoria} />}
 
             {dataCaso.Titulo && <InfoAnimal data={dataCaso} />}
+
 
             {/* {entonces tendria que colocar cada actualizacion del estado del caso del animal aparte 
 en un componente donde le tendre que hacer un map e ir listandola en el casoUnitario y en la home mostrar como post con sus comentarios 

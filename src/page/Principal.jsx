@@ -17,7 +17,7 @@ function Principal() {
 
     return (
         <StateUserGlobal >
-            <div>
+            <div className='contenedor'>
                 <Nav contenido={<ContenidoParaNavPrincipal />} />
                 <div className='contenedorformPrincipal'>
                     <main className='ContenedorPrincipalPost'>

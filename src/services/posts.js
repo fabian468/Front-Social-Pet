@@ -1,4 +1,6 @@
-const URI = "http://localhost:4000/post/";
+import { URIIMG } from "../config"
+
+const URI = `${URIIMG}/post/`;
 
 export async function ViewAllPosts() {
     try {

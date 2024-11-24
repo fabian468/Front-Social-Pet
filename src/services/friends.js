@@ -1,4 +1,7 @@
-const URI = "http://localhost:4000/api/";
+import { URIIMG } from "../config"
+
+const URI = `${URIIMG}/post/`;
+
 
 export async function getUserbyname(letter) {
     try {

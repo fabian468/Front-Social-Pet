@@ -1,0 +1,39 @@
+.formAgregarHistoria {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 40vh;
+    background-color: #093543;
+    color: #fff;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: .8em;
+    justify-content: space-evenly;
+
+}
+
+.formAgregarHistoria p {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+}
+
+
+.formAgregarHistoria textarea {
+    width: 30em;
+    height: 2em;
+    max-height: 4em;
+    outline: none;
+    resize: none;
+    border-radius: .8em;
+    padding: 1em;
+}
+
+.formAgregarHistoria button {
+    cursor: pointer;
+}
