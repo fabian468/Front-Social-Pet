@@ -50,7 +50,8 @@ export async function createPost(content, image, author) {
     }
 }
 
-export async function createHelp(content, image, author, nombredelAnimal, ubicacionAnimal, tipoAyudaNecesitada) {
+export async function createHelp(content, image, author, nombredelAnimal, ubicacionAnimal, tipoAyudaNecesitada, esHitoria) {
+    console.log(content, image, author, nombredelAnimal, ubicacionAnimal, tipoAyudaNecesitada, esHitoria)
     const formData = new FormData();
     formData.append('Titulo', content);
     formData.append('video', image);
@@ -58,11 +59,12 @@ export async function createHelp(content, image, author, nombredelAnimal, ubicac
     formData.append('nombredelAnimal', nombredelAnimal);
     formData.append('ubicacionAnimal', ubicacionAnimal);
     formData.append('tipoAyudaNecesitada', tipoAyudaNecesitada);
+    formData.append('esHistoria', esHitoria);
 
     try {
         const response = await fetch(URI + 'helps', {
             method: 'POST',
-            body: formData, // Enviar formData directamente
+            body: formData,
             headers: {
             }
         });

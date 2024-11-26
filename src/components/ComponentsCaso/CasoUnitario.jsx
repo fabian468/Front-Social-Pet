@@ -1,43 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import "../../styles/datosAnimales.css"
 
-import img2 from "../../img/img_4.jpg";
-import img3 from "../../img/img_3.jpg";
-import img4 from "../../img/img_2.jpg";
 import Donaciones from './Donaciones';
 import { useParams } from 'react-router-dom';
-import { getOneHelpsId } from '../../services/helps';
+import { getOneHelpsHistoriaId, getOneHelpsId } from '../../services/helps';
 import { URIIMG } from '../../config';
 import { verificarVideo } from '../../helpers/isVideo';
 import InfoAnimal from './InfoAnimal';
 import { canUserDeletePost } from '../../helpers/canDeletePost';
 import FormAgregarHistoria from './FormAgregarHistoria';
+import HistoriaDeLosCaso from './HistoriaDeLosCasos';
 
 function CasoUnitario() {
     const [abrirDonar, setAbrirDonar] = useState(false)
     const [abrirFormAgregarHistoria, setAbrirFormAgregarHistoria,] = useState(false)
-    const { scrollYProgress } = useScroll();
     const [dataCaso, setDataCaso] = useState([])
+    const [historias, setHistorias] = useState(null);
+
 
     const { id } = useParams()
 
     useEffect(() => {
         async function obtenerDatosDeCasos() {
+            try {
+                const [helpData, historiasData] = await Promise.all([
+                    getOneHelpsId(id),
+                    getOneHelpsHistoriaId(id),
+                ]);
 
-            setDataCaso(await getOneHelpsId(id))
+                setDataCaso(helpData);
+                setHistorias(historiasData);
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            }
         }
         obtenerDatosDeCasos()
     }, [id])
-
-    const opacity2 = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
-    const opacity3 = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
-    const opacity4 = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
-
-    const x2 = useTransform(scrollYProgress, [0.2, 0.4], [200, 0]);
-    const x2_1 = useTransform(scrollYProgress, [0.2, 0.4], [-200, 0]);
-    const x3 = useTransform(scrollYProgress, [0.4, 0.6], [-200, 0]);
-    const x4 = useTransform(scrollYProgress, [0.6, 0.8], [200, 400]);
 
     return (
         <div className="container">
@@ -72,39 +70,12 @@ function CasoUnitario() {
             </div>
             {canUserDeletePost(dataCaso.author?._id) && <span className='abrirFormAhistoria' onClick={() => setAbrirFormAgregarHistoria(!abrirFormAgregarHistoria)}>Agregar una historia a tu caso</span>}
 
-            {abrirFormAgregarHistoria && <FormAgregarHistoria setcerrar={setAbrirFormAgregarHistoria} />}
+            {abrirFormAgregarHistoria && <FormAgregarHistoria setcerrar={setAbrirFormAgregarHistoria} idCaso={id} />}
 
             {dataCaso.Titulo && <InfoAnimal data={dataCaso} />}
 
+            <HistoriaDeLosCaso historias={historias} />
 
-            {/* {entonces tendria que colocar cada actualizacion del estado del caso del animal aparte 
-en un componente donde le tendre que hacer un map e ir listandola en el casoUnitario y en la home mostrar como post con sus comentarios 
-en ambos lados ejemplo caso juanito mostramos un post principal en el post principal pondre las ramas de actualizacion del animal 
-cuando este agregue una historia de su caso 
-} */}
-
-            <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                <motion.div className="left" style={{ x: x2_1, opacity: opacity2 }}>
-                    <div>
-                        <p> 04/10/2024</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias in consequuntur amet quas voluptas corrupti. Iure facilis, necessitatibus vel pariatur, voluptate iusto impedit voluptas dolor deserunt libero minima quisquam vero?</p>
-                    </div>
-                </motion.div>
-                <motion.div className="right" style={{ x: x2, opacity: opacity2 }}>
-                    <img src={img2} alt="Imagen 2" />
-                </motion.div>
-            </div>
-
-
-
-            <motion.div className="left" style={{ x: x3, opacity: opacity3 }}>
-                <img src={img3} alt="Imagen 3" />
-            </motion.div>
-
-
-            <motion.div className="right" style={{ x: x4, opacity: opacity4 }}>
-                <img src={img4} alt="Imagen 4" />
-            </motion.div>
         </div>
     );
 }

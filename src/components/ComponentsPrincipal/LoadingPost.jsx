@@ -2,7 +2,6 @@ import React from 'react'
 import InputPost from './InputPost'
 import { usePostAll } from '../../hooks/usePostAll';
 import PostOne from './componentePostAlls/PostOne';
-import Help from '../../page/Help';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 

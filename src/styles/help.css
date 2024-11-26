@@ -65,3 +65,63 @@
         opacity: 1;
     }
 }
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    gap: 50px;
+}
+
+.imagenHistoria {
+    width: 60%;
+}
+
+
+.left,
+.right {
+    width: 80%;
+    height: auto !important;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+    border-radius: 10px;
+    gap: 20px;
+
+}
+
+.left {
+    float: left;
+    box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+.right {
+    float: right;
+    flex-direction: row-reverse;
+    box-shadow: -10px 10px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.contenedorDatosHistoria {
+    width: 50%;
+}
+
+.fechaCreacionHistoria {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.left .fechaCreacionHistoria {
+    text-align: end;
+}

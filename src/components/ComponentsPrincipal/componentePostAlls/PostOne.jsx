@@ -2,15 +2,18 @@ import { canUserDeletePost } from '../../../helpers/canDeletePost';
 import { MdDelete } from "react-icons/md";
 import CommentsPost from './CommentsPost';
 import FormComentPost from './FormComentPost';
-import { deletePost } from '../../../services/posts';
 import { useToggleButton } from '../../../hooks/useToggleButton';
 import { Link } from 'react-router-dom';
 import ImagePerfil from './ImagePerfil';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { verificarVideo } from '../../../helpers/isVideo';
+import { showSwal } from '../../../helpers/advertenciaEliminacion';
+
 
 function PostOne({ data, needImage = true }) {
     const { despliegueComentario, toggleComentario } = useToggleButton();
+
+
 
     return (
         <>
@@ -22,9 +25,11 @@ function PostOne({ data, needImage = true }) {
                     <LazyLoadComponent key={d._id} >
 
 
-                        <div className='contenedorPost' style={{ backgroundColor: d.tipoAyudaNecesitada ? "darkgreen" : "white", color: d.tipoAyudaNecesitada && "white" }}>
+                        <div className='contenedorPost' style={{ backgroundColor: d.tipoAyudaNecesitada ? (d.esHistoria !== "null" ? "gray" : "darkred") : "white", color: d.tipoAyudaNecesitada && "white" }}>
                             {canUserDeletePost(d.author._id ? d.author._id : d.author) && (
-                                <MdDelete className='tarroDelete' onClick={() => deletePost(d._id, d.tipoAyudaNecesitada)} />
+
+                                <MdDelete className='tarroDelete' onClick={() => showSwal(d._id, d.tipoAyudaNecesitada)} />
+
                             )}
                             <div style={{ display: "flex", gap: "10px" }}>
                                 {needImage && <ImagePerfil dataUser={d.author ? d.author : d} width2={"40px"} height2={"40px"} />}
@@ -32,10 +37,8 @@ function PostOne({ data, needImage = true }) {
                             </div>
                             <p className='contenidoPost'>{d.content ? d.content : d.Titulo}</p>
 
-
-
                             {d.tipoAyudaNecesitada ?
-                                <Link to={"../caso/" + d._id}>
+                                <Link to={`../caso/${d.esHistoria !== "null" ? d.esHistoria : d._id}`}>
                                     {d.image && !verificarVideo(d.image) ? <img style={{ aspectRatio: "16/9" }} src={`http://localhost:4000/${d.image.replace(/\\/g, '/')}`} alt="" />
                                         :
                                         d.image && <video autoPlay controls style={{ aspectRatio: "16/9" }} src={`http://localhost:4000/${d.image.replace(/\\/g, '/')}`} alt="" />}

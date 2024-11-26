@@ -10,6 +10,7 @@ export async function getAllHelps() {
         }
 
         const data = await res.json()
+
         return data
     } catch {
         console.log("error")
@@ -20,6 +21,7 @@ export async function getAllHelps() {
 
 export async function getOneHelpsId(id) {
     try {
+        window.scrollTo(0, 0);
         const res = await fetch(`${URIIMG}/post/helps/${id}`)
 
         if (!res.ok) {
@@ -27,6 +29,24 @@ export async function getOneHelpsId(id) {
         }
 
         const data = await res.json()
+
+        return data
+    } catch {
+        console.log("error")
+    }
+
+}
+
+export async function getOneHelpsHistoriaId(id) {
+    try {
+        const res = await fetch(`${URIIMG}/post/helps/historia/${id}`)
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json()
+
         return data
     } catch {
         console.log("error")

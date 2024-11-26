@@ -27,11 +27,10 @@
     flex: 4;
 }
 
-.card p span {
-    min-width: 14em;
-    padding: .5em;
+.card p span,
+.prueba {
     text-align: center;
-    transform: rotate(-90deg);
+    transform: rotate(-45deg);
     transition: all .5s;
     text-transform: uppercase;
     color: #fff;

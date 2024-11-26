@@ -36,7 +36,8 @@ function InputPost({ setData, datos }) {
                 localStorage.getItem('idUser'),
                 data.nombreAnimal,
                 data.direccionAnimal,
-                data.tipoAyuda
+                data.tipoAyuda,
+                null
             )
             setData([...datos, nuevaHelp.newHelp])
 
