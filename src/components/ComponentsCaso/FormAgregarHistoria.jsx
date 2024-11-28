@@ -22,8 +22,6 @@ function FormAgregarHistoria({ setcerrar, idCaso }) {
                 null,
                 idCaso
             );
-            console.log(nuevaHelp)
-
 
             if (nuevaHelp) {
                 reset()

@@ -10,6 +10,7 @@ import InfoAnimal from './InfoAnimal';
 import { canUserDeletePost } from '../../helpers/canDeletePost';
 import FormAgregarHistoria from './FormAgregarHistoria';
 import HistoriaDeLosCaso from './HistoriaDeLosCasos';
+import { seguirElCaso } from '../../services/getUsers';
 
 function CasoUnitario() {
     const [abrirDonar, setAbrirDonar] = useState(false)
@@ -37,6 +38,12 @@ function CasoUnitario() {
         obtenerDatosDeCasos()
     }, [id])
 
+    const seguirCaso = async (idCaso) => {
+        const id = localStorage.getItem('idUser')
+        const data = await seguirElCaso(id, idCaso)
+        console.log(data)
+    }
+
     return (
         <div className="container">
 
@@ -58,7 +65,7 @@ function CasoUnitario() {
                     borderRadius: "30px", position: "fixed", width: "10%",
                     backgroundColor: "blue", color: "#fff"
                 }}
-                onClick={() => setAbrirDonar(!abrirDonar)} >Seguir caso
+                onClick={() => seguirCaso(dataCaso._id)} >Seguir caso
             </button>
 
             {abrirDonar && <Donaciones closeDonation={setAbrirDonar} />}

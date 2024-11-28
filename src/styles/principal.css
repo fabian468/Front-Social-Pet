@@ -93,8 +93,6 @@
     text-decoration: none;
 }
 
-.contenedorBienvenida p {}
-
 
 
 /* =========================== */
@@ -117,9 +115,10 @@
 .contenedorPosts,
 .contenedorPerfilUser,
 .contenedorAllFriends,
+.contendorHelping,
 .contenedorCasos,
 .contenedorBienvenida {
-    width: 60%;
+    width: 60% !important;
     padding: 1em;
     position: relative;
 }

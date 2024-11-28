@@ -1,6 +1,6 @@
 import { URIIMG } from "../config"
 
-const URI = `${URIIMG}/post/`;
+const URI = `${URIIMG}/api/`;
 
 
 export async function getUserbyname(letter) {

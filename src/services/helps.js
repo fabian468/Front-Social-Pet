@@ -1,6 +1,5 @@
 import { URIIMG } from "../config"
 
-
 export async function getAllHelps() {
     try {
         const res = await fetch(URIIMG + "/post/helps")
@@ -94,4 +93,22 @@ export async function deleteCommentshelps(helpId, commentId) {
     } catch (error) {
         return ('Error al eliminar el post:', error);
     }
+}
+
+
+export async function getAllHelpsFollow(userId) {
+    try {
+        const res = await fetch(URIIMG + `/api/user/cases/${userId}`)
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json()
+
+        return data
+    } catch {
+        console.log("error")
+    }
+
 }

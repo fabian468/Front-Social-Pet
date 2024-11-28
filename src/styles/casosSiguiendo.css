@@ -1,0 +1,49 @@
+.contendorHelping {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 16px;
+    background-color: #f0f0f0;
+}
+
+.contenedorHelpsSeguido {
+    position: relative;
+    padding: 20px;
+    min-width: 250px;
+    height: 350px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    gap: 10px;
+}
+
+
+
+.imgvid {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dejardeseguir {
+    background-color: tomato;
+}
+
+.vercaso {
+    background-color: darkgreen;
+    text-decoration: none;
+}
