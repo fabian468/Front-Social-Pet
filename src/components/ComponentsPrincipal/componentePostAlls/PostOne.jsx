@@ -8,10 +8,14 @@ import ImagePerfil from './ImagePerfil';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { verificarVideo } from '../../../helpers/isVideo';
 import { showSwal } from '../../../helpers/advertenciaEliminacion';
+import { showSwalseguimientoDelCaso } from '../../../helpers/siguiendoAdvertencia';
+import { yesfollowHelps } from '../../../services/helps';
+
 
 
 function PostOne({ data, needImage = true }) {
     const { despliegueComentario, toggleComentario } = useToggleButton();
+
 
 
 
@@ -23,7 +27,7 @@ function PostOne({ data, needImage = true }) {
                 .map((d) => (
 
                     <LazyLoadComponent key={d._id} >
-
+                        {console.log(yesfollowHelps(localStorage.getItem('idUser'), d._id))}
 
                         <div className='contenedorPost' style={{ backgroundColor: d.tipoAyudaNecesitada ? (d.esHistoria !== "null" ? "gray" : "darkred") : "white", color: d.tipoAyudaNecesitada && "white" }}>
                             {canUserDeletePost(d.author._id ? d.author._id : d.author) && (
@@ -53,9 +57,9 @@ function PostOne({ data, needImage = true }) {
 
                             <div className='contenedorCaracteristicasPost'>
                                 <p>Me gusta</p>
-                                {d.tipoAyudaNecesitada && <p>Seguir caso</p>}
+                                {d.tipoAyudaNecesitada && <p onClick={() => showSwalseguimientoDelCaso(localStorage.getItem('idUser'), d.esHistoria !== "null" ? d.esHistoria : d._id)}>Seguir caso</p>}
 
-                                {d.tipoAyudaNecesitada && <Link to={"../caso/" + d._id}>Más info</Link>}
+                                {d.tipoAyudaNecesitada && <Link to={`../caso/${d.esHistoria !== "null" ? d.esHistoria : d._id}`}>Más info</Link>}
                                 {d.comments && <p className='despliegueComentarios' onClick={() => toggleComentario(d._id)}>Comentarios ({d.comments.length})</p>}
                             </div>
                             {despliegueComentario === d._id && (

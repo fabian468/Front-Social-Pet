@@ -7,7 +7,6 @@ import '../styles/casosSiguiendo.css'
 function Help() {
     const [dataHelpSiguiendo, setdataHelpSiguiendo] = useState([])
 
-    console.log(dataHelpSiguiendo)
     useEffect(() => {
 
         const obtenerHelps = async () => {

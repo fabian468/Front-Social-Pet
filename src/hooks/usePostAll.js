@@ -7,6 +7,7 @@ export function usePostAll() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -17,7 +18,6 @@ export function usePostAll() {
                 const combinedData = [...posts, ...helpPost].sort((a, b) => {
                     return new Date(a.createdAt || 0) - new Date(b.createdAt || 0)
                 })
-
                 setData(combinedData)
 
             } catch (err) {
@@ -34,6 +34,6 @@ export function usePostAll() {
         data,
         loading,
         error,
-        setData
+        setData,
     }
 }

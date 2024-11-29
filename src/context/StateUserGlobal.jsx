@@ -5,6 +5,8 @@ import { getUser } from '../services/getUsers';
 function StateUserGlobal({ children }) {
     const [dataUser, setDataUser] = useState([]);
 
+
+
     useEffect(() => {
         async function getOneUser(id) {
             if (id) {

@@ -10,7 +10,7 @@
     position: relative;
     padding: 20px;
     min-width: 250px;
-    height: 350px;
+    height: 380px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: start;
     text-align: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 

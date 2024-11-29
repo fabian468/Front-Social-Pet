@@ -22,7 +22,7 @@ function FormRegister({ abrirRegistro, setAbrirRegistro }) {
 
         if (res.message === "Usuario registrado exitosamente") {
             localStorage.setItem('token', res.token);
-            localStorage.setItem('idUser', res.user._id);
+            localStorage.setItem('idUser', res.user.id);
             reset()
             navigate("/home/post")
         } else if (res.message === "El correo electrónico ya está registrado") {

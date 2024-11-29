@@ -1,32 +1,29 @@
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { deletePost } from '../services/posts';
+import { unfollowHelps } from '../services/helps';
 
 
-export const showSwal = (id, tipoAyudaNecesitada) => {
+export const showSwalseguimiento = (idUser, idCaso) => {
     withReactContent(Swal).fire({
-        title: "Estas seguro que desea eliminar?",
+        title: "Estas seguro que desea dejar seguir?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Si, elimina!",
+        confirmButtonText: "Si, dejar!",
         cancelButtonText: "Cancelar"
 
     }).then((result) => {
         if (result.isConfirmed) {
-            if (deletePost(id, tipoAyudaNecesitada)) {
+            if (unfollowHelps(idUser, idCaso)) {
                 withReactContent(Swal).fire({
-                    title: "Eliminado!",
-                    text: "Tu publicación fue eliminada.",
-                    icon: "success",
-                    showConfirmButton: false,
-                    timer: 1500
+                    title: "dejo de seguir :(",
+                    icon: "success"
                 });
             } else {
                 withReactContent(Swal).fire({
                     title: "¡Ocurrió un problema!",
-                    text: "No fue posible eliminar el post.",
+                    text: "No fue posible dejar de seguir el caso.",
                     icon: "warning"
                 });
             }

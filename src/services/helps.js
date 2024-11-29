@@ -98,7 +98,7 @@ export async function deleteCommentshelps(helpId, commentId) {
 
 export async function getAllHelpsFollow(userId) {
     try {
-        const res = await fetch(URIIMG + `/api/user/cases/${userId}`)
+        const res = await fetch(`${URIIMG}/api/user/cases/${userId}`)
 
         if (!res.ok) {
             return false
@@ -112,3 +112,47 @@ export async function getAllHelpsFollow(userId) {
     }
 
 }
+
+export async function unfollowHelps(userId, caseId) {
+    try {
+        const res = await fetch(`${URIIMG}/api/user/unfollow`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId, caseId }),
+        });
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+
+export async function yesfollowHelps(userId, caseId) {
+    try {
+        const res = await fetch(`${URIIMG}/api//user/yesfollow`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId, caseId }),
+        });
+
+        if (!res.ok) {
+            return false
+        }
+
+        const data = await res.json();
+        return data.isFollowing;
+    } catch (e) {
+        console.error(e)
+    }
+}
+

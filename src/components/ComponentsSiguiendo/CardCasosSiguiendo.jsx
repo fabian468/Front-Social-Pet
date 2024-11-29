@@ -2,6 +2,7 @@ import React from 'react'
 import { URIIMG } from '../../config'
 import { verificarVideo } from '../../helpers/isVideo'
 import { Link } from 'react-router-dom'
+import { showSwalseguimiento } from '../../helpers/eliminarSeguimiento'
 
 
 function CardCasosSiguiendo({ dataHelpSiguiendo }) {
@@ -15,8 +16,9 @@ function CardCasosSiguiendo({ dataHelpSiguiendo }) {
                             <div className='contenedorImgVidHelpsSiguiendo'>
                                 {!verificarVideo(d.image) ? <img className='imgvid' src={`${URIIMG}/${d.image.replace(/\\/g, '/')}`} alt="" /> : <video className='imgvid' src={`${URIIMG}/${d.image}`} controls />}
                             </div>
+                            <p>{d.nombredelAnimal}</p>
                             <p>{d.Titulo}</p>
-                            <button className='btn dejardeseguir'>Dejar de seguir</button>
+                            <button onClick={() => showSwalseguimiento(localStorage.getItem('idUser'), d._id)} className='btn dejardeseguir'>Dejar de seguir</button>
                             <Link to={`../caso/${d._id}`} className='btn vercaso'>Ver Caso</Link>
                         </div>
                     )) : <div>Sigue y ayuda</div>
