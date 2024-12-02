@@ -1,6 +1,6 @@
 .contendorHelping {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     padding: 16px;
     background-color: #f0f0f0;
@@ -10,7 +10,7 @@
     position: relative;
     padding: 20px;
     min-width: 250px;
-    height: 380px;
+    height: auto;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;

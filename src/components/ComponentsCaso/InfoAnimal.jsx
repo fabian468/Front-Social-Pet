@@ -5,7 +5,7 @@ function InfoAnimal({ data }) {
         <table className="ContenedorDatosAnimalAyudas">
             <tbody>
                 <tr>
-                    <td colSpan="3" style={{ textAlign: "center" }}>Fecha publicación: {data.createdAt}</td>
+                    <td colSpan="3" style={{ textAlign: "center" }}>Fecha publicación:{new Date(data.createdAt).toLocaleDateString('es-ES')}</td>
                 </tr>
                 <tr>
                     <td style={{ textAlign: "center" }}>Autor de la publicación: {data.author.name}</td>

@@ -11,7 +11,6 @@ function FormAgregarHistoria({ setcerrar, idCaso }) {
     } = useForm()
 
     const onSubmit = handleSubmit(async (data) => {
-        console.log(data.file1)
         if (data.file1 && data.file1.length > 0) {
             const nuevaHelp = await createHelp(
                 data.historia,

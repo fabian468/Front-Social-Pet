@@ -9,7 +9,6 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { verificarVideo } from '../../../helpers/isVideo';
 import { showSwal } from '../../../helpers/advertenciaEliminacion';
 import { showSwalseguimientoDelCaso } from '../../../helpers/siguiendoAdvertencia';
-import { yesfollowHelps } from '../../../services/helps';
 
 
 
@@ -27,9 +26,10 @@ function PostOne({ data, needImage = true }) {
                 .map((d) => (
 
                     <LazyLoadComponent key={d._id} >
-                        {console.log(yesfollowHelps(localStorage.getItem('idUser'), d._id))}
+
 
                         <div className='contenedorPost' style={{ backgroundColor: d.tipoAyudaNecesitada ? (d.esHistoria !== "null" ? "gray" : "darkred") : "white", color: d.tipoAyudaNecesitada && "white" }}>
+                            <p style={{ position: "absolute", right: "10px", top: "20px" }}>{new Date(d.createdAt).toLocaleDateString('es-ES')}</p>
                             {canUserDeletePost(d.author._id ? d.author._id : d.author) && (
 
                                 <MdDelete className='tarroDelete' onClick={() => showSwal(d._id, d.tipoAyudaNecesitada)} />
