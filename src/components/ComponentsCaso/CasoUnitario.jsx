@@ -79,7 +79,7 @@ function CasoUnitario() {
                     onClick={() => showSwalseguimiento(localStorage.getItem('idUser'), dataCaso._id)} >Dejar de seguir
                 </button>}
 
-            {abrirDonar && <Donaciones closeDonation={setAbrirDonar} />}
+            {abrirDonar && <Donaciones closeDonation={setAbrirDonar} idCaso={id} />}
 
             <div >
                 {verificarVideo(`${URIIMG}/${dataCaso.image}`) ? <video autoPlay style={{ aspectRatio: "16/9" }} controls src={`${URIIMG}/${dataCaso.image}`} alt="Imagen 1" /> :

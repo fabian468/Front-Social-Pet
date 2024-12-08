@@ -1,6 +1,7 @@
 import { URIIMG } from "../config"
 
 const URI = `${URIIMG}/api/`
+console.log(URI)
 
 export async function userLogin(email, password) {
     try {

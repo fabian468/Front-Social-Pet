@@ -13,7 +13,7 @@ function CommentsPost({ comments, idPost, ishelps }) {
                     return <div key={com._id} style={{ display: "flex", alignItems: "center" }}>
                         <ImagePerfil dataUser={com.user} width2={"40px"} height2={"40px"} />
                         <div className='contenedorComments'>
-                            <div>
+                            <div style={{ color: "black" }}>
                                 <p className='NameUserComments'>{com.user.name} </p>
                                 <p className='comentario' >{com.comment} </p>
                             </div>
